@@ -1,0 +1,22 @@
+package pkClasses;
+
+import java.util.Comparator;
+
+public class CompareDate implements Comparator<Item> {
+	
+	public int compare(Item unItem, Item deuxItem) {
+		int resultat;
+		
+		if(unItem.getDate().before(deuxItem.getDate())) {
+			resultat = -1;
+		}
+		else if(unItem.getDate().equals(deuxItem.getDate())) {
+			resultat = unItem.getTitre().compareTo(deuxItem.getTitre());
+		}
+		else
+			resultat = 1;
+		
+		return resultat;
+	}
+
+}

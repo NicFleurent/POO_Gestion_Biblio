@@ -1,0 +1,144 @@
+package ProjetPersonnel;
+
+import javax.swing.JOptionPane;
+
+public class CalculBowling 
+{
+
+	public static void main(String[] args) 
+	{
+		String strCar1Coup1;
+		int iCar1Coup1;
+
+		strCar1Coup1 	= JOptionPane.showInputDialog("Entrez le score de votre premier coup au premier carreau.");
+		iCar1Coup1 		= Integer.parseInt(strCar1Coup1);
+		
+		if (iCar1Coup1 == 10){
+			
+			String strAffichage1 = " ";
+			strAffichage1 += "\n1er carreau: Les 2 prochains lancés sont nécessaire pour le calcul (Abat)";
+			
+			JOptionPane.showMessageDialog(null, strAffichage1, "Résultat 1er carreau", JOptionPane.PLAIN_MESSAGE);	
+			
+			String strCar2Coup1;
+			int iCar2Coup1;
+
+			strCar2Coup1 	= JOptionPane.showInputDialog("Entrez le score de votre premier coup au deuxième carreau.");
+			iCar2Coup1 		= Integer.parseInt(strCar2Coup1);
+			
+			if (iCar2Coup1 == 10) {
+				
+				String strAffichage2 = " ";
+				strAffichage2 += "\n1er carreau: Le prochain lancé est nécessaire pour le calcul (Abat)";
+				strAffichage2 += "\n2e carreau: Les 2 prochains lancés sont nécessaire pour le calcul (Abat)";
+				
+				JOptionPane.showMessageDialog(null, strAffichage2, "Résultat 1er carreau", JOptionPane.PLAIN_MESSAGE);	
+				
+				String strCar3Coup1;
+				int iCar3Coup1;
+
+				strCar3Coup1 	= JOptionPane.showInputDialog("Entrez le score de votre premier coup au troisième carreau.");
+				iCar3Coup1 		= Integer.parseInt(strCar3Coup1);
+				
+				if (iCar3Coup1 == 10) {
+					
+					int iTotalCar1;
+					
+					iTotalCar1 = iCar1Coup1 + iCar2Coup1 + iCar3Coup1;
+					
+					String strAffichage3 = " ";
+					strAffichage3 += "\n1er carreau: " + iTotalCar1 + "(Abat)";
+					strAffichage3 += "\n2e carreau: Le prochain lancé est nécessaire pour le calcul (Abat)";
+					strAffichage3 += "\n3e carreau: Les 2 prochains lancés sont nécessaire pour le calcul (Abat)";
+					
+					JOptionPane.showMessageDialog(null, strAffichage3, "Résultat 1er carreau", JOptionPane.PLAIN_MESSAGE);	
+					
+					String strCar4Coup1;
+					int iCar4Coup1;
+
+					strCar4Coup1 	= JOptionPane.showInputDialog("Entrez le score de votre premier coup au deuxième carreau.");
+					iCar4Coup1 		= Integer.parseInt(strCar4Coup1);
+					
+					if (iCar4Coup1 == 10) {
+						
+						int iTotalCar2;
+						
+						iTotalCar2 = iTotalCar1 + iCar2Coup1 + iCar3Coup1 + iCar4Coup1;
+						
+						String strAffichage4 = " ";
+						strAffichage4 += "\n2e carreau: " + iTotalCar2 + "(Abat)";
+						strAffichage4 += "\n3e carreau: Le prochain lancé est nécessaire pour le calcul (Abat)";
+						strAffichage4 += "\n4e carreau: Les 2 prochains lancés sont nécessaire pour le calcul (Abat)";
+						
+						JOptionPane.showMessageDialog(null, strAffichage3, "Résultat 1er carreau", JOptionPane.PLAIN_MESSAGE);	
+						
+						String strCar5Coup1;
+						int iCar5Coup1;
+
+						strCar5Coup1 	= JOptionPane.showInputDialog("Entrez le score de votre premier coup au deuxième carreau.");
+						iCar5Coup1 		= Integer.parseInt(strCar5Coup1);
+
+					}
+				}
+			}
+		}
+		/*} else {
+
+		String strCar2Coup2;
+		int iCar2Coup2;
+		int iCar2Tot;
+		
+		strCar2Coup2 	= JOptionPane.showInputDialog("Entrez le score de votre deuxième coup.");
+		iCar2Coup2 		= Integer.parseInt(strCar2Coup2);
+		iCar2Tot		= iCar1Coup1 + iCar2Coup2;
+		
+		if (iCar1Tot == 10){
+			JOptionPane.showMessageDialog(null, "Vous avez fait une réserve le prochain lancé est nécessaire pour le calcul");
+			
+		} else {
+			JOptionPane.showMessageDialog(null, "Votre score est de :" + iCar1Tot);
+		}*/
+	
+		
+		String strCar2Coup2;
+		String strCar3Coup1;
+		String strCar3Coup2;
+		String strCar4Coup1;
+		String strCar4Coup2;
+		String strCar5Coup1;
+		String strCar5Coup2;
+		String strCar6Coup1;
+		String strCar6Coup2;
+		String strCar7Coup1;
+		String strCar7Coup2;
+		String strCar8Coup1;
+		String strCar8Coup2;
+		String strCar9Coup1;
+		String strCar9Coup2;
+		String strCar10Coup1;
+		String strCar10Coup2;
+		String strCar10Coup3;
+		
+		int iCar2Coup2;
+		int iCar3Coup1;
+		int iCar3Coup2;
+		int iCar4Coup1;
+		int iCar4Coup2;
+		int iCar5Coup1;
+		int iCar5Coup2;
+		int iCar6Coup1;
+		int iCar6Coup2;
+		int iCar7Coup1;
+		int iCar7Coup2;
+		int iCar8Coup1;
+		int iCar8Coup2;
+		int iCar9Coup1;
+		int iCar9Coup2;
+		int iCar10Coup1;
+		int iCar10Coup2;
+		int iCar10Coup3;
+		
+		
+	}
+
+}

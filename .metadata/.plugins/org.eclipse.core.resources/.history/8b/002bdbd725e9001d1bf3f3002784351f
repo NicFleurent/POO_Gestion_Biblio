@@ -1,0 +1,729 @@
+package pkTest;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.GregorianCalendar;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import pkClasses.*;
+
+public class MainFrame implements ActionListener {
+	
+	private JFrame frame;
+	
+	private JPanel menu;
+	private JPanel pnlAccueil;
+	private JPanel pnlAjouter;
+	private JPanel pnlSupprimer;
+	private JPanel pnlVisualiser;
+	private JPanel pnlAfficherConsole;
+	private JPanel pnlArchiver;
+	
+	private JButton btnAjouter;
+	private JButton btnSupprimer;
+	private JButton btnModifer;
+	private JButton btnVisualiser;
+	private JButton btnAfficherConsole;
+	private JButton btnArchiver;
+	private JButton btnQuitter;
+	
+	private JLabel lblAccueil;
+	
+	private BDItems bdBiblio;
+	
+	public MainFrame() {
+		initialize();
+	}
+	
+	public void creerbdBase() {
+		bdBiblio = new BDItems();
+		
+		Revue uneRevue = new Revue();
+		Revue deuxRevue = new Revue();
+		Revue troisRevue = new Revue();
+		Revue quatreRevue = new Revue();
+		bdBiblio.ajouter(uneRevue);
+		bdBiblio.ajouter(deuxRevue);
+		bdBiblio.ajouter(troisRevue);
+		bdBiblio.ajouter(quatreRevue);
+
+		Journal unJournal = new Journal();
+		Journal deuxJournal = new Journal();
+		Journal troisJournal = new Journal();
+		Journal quatreJournal = new Journal();
+		bdBiblio.ajouter(unJournal);
+		bdBiblio.ajouter(deuxJournal);
+		bdBiblio.ajouter(troisJournal);
+		bdBiblio.ajouter(quatreJournal);
+
+		Dvd unDvd = new Dvd();
+		Dvd deuxDvd = new Dvd();
+		Dvd troisDvd = new Dvd();
+		Dvd quatreDvd = new Dvd();
+		bdBiblio.ajouter(unDvd);
+		bdBiblio.ajouter(deuxDvd);
+		bdBiblio.ajouter(troisDvd);
+		bdBiblio.ajouter(quatreDvd);
+
+		DisqueCompact unDisqueCompact = new DisqueCompact();
+		DisqueCompact deuxDisqueCompactt = new DisqueCompact();
+		DisqueCompact troisDisqueCompact = new DisqueCompact();
+		DisqueCompact quatreDisqueCompact = new DisqueCompact();
+		bdBiblio.ajouter(unDisqueCompact);
+		bdBiblio.ajouter(deuxDisqueCompactt);
+		bdBiblio.ajouter(troisDisqueCompact);
+		bdBiblio.ajouter(quatreDisqueCompact);
+
+		Livre unLivre = new Livre();
+		Livre deuxLivre = new Livre();
+		Livre troisLivre = new Livre();
+		Livre quatreLivre = new Livre();
+		bdBiblio.ajouter(unLivre);
+		bdBiblio.ajouter(deuxLivre);
+		bdBiblio.ajouter(troisLivre);
+		bdBiblio.ajouter(quatreLivre);
+
+		Dictionnaire unDictionnaire = new Dictionnaire();
+		Dictionnaire deuxDictionnaire = new Dictionnaire();
+		Dictionnaire troisDictionnaire = new Dictionnaire();
+		Dictionnaire quatreDictionnaire = new Dictionnaire();
+		bdBiblio.ajouter(unDictionnaire);
+		bdBiblio.ajouter(deuxDictionnaire);
+		bdBiblio.ajouter(troisDictionnaire);
+		bdBiblio.ajouter(quatreDictionnaire);
+	}
+	
+	//Prépare la fenêtre principal avec le menu et la page d'accueil
+	private void initialize() {
+		creerbdBase();
+		
+		frame = new JFrame();
+		frame.setTitle("JCheckBox Demo");
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.setSize(1500, 800);
+		frame.setMinimumSize(new Dimension(1300, 500));
+		frame.setLayout(new BorderLayout(10, 10));
+		frame.setLocationRelativeTo(null);
+		frame.setResizable(false);
+		
+		menu = new JPanel();
+		menu.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 5));
+		menu.setBackground(Color.GRAY);
+		
+		btnAjouter = new JButton("Ajouter un document");
+		btnAjouter.addActionListener(this);
+		menu.add(btnAjouter);
+		
+		btnSupprimer = new JButton("Supprimer un document");
+		btnSupprimer.addActionListener(this);
+		menu.add(btnSupprimer);
+		
+		btnModifer = new JButton("Modifier un document");
+		btnModifer.addActionListener(this);
+		menu.add(btnModifer);
+		
+		btnVisualiser = new JButton("Visualiser un document");
+		btnVisualiser.addActionListener(this);
+		menu.add(btnVisualiser);
+		
+		btnAfficherConsole = new JButton("Afficher les documents (console)");
+		btnAfficherConsole.addActionListener(this);
+		menu.add(btnAfficherConsole);
+		
+		btnArchiver = new JButton("Archiver les documents");
+		btnArchiver.addActionListener(this);
+		menu.add(btnArchiver);
+		
+		btnQuitter = new JButton("Quitter l'application");
+		btnQuitter.addActionListener(this);
+		menu.add(btnQuitter);
+		
+		pnlAccueil = new JPanel();
+		pnlAccueil.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 5));
+		
+		lblAccueil = new JLabel("Bienvenue dans l'application de gestion de la bibliothèque");
+		lblAccueil.setFont(new Font("Sans-serif", Font.BOLD, 36));
+		
+		pnlAccueil.add(lblAccueil);
+		
+		frame.add(menu, BorderLayout.NORTH);
+		frame.add(pnlAccueil, BorderLayout.CENTER);
+		
+	}
+
+	//Permet d'afficher la page
+	public void show() {
+		frame.setVisible(true);
+	}
+	
+	//Donne les effets aux boutons du menu
+	public void actionPerformed(ActionEvent e) {
+		String s = e.getActionCommand();
+		if(s.equals("Ajouter un document")) {
+			ajouterDocument();
+		}
+		else if(s.equals("Supprimer un document")) {
+			System.out.println("Supprimer");
+			supprimerDocument();
+		}
+		else if(s.equals("Modifier un document")) {
+			System.out.println("Modifier");
+			modifierDocument();
+		}
+		else if(s.equals("Visualiser un document")) {
+			visualiserDocument();
+			System.out.println("Visualiser");
+		}
+		else if(s.equals("Afficher les documents (console)")) {
+			System.out.println("Afficher");
+			afficherConsole();
+		}
+		else if(s.equals("Archiver les documents")) {
+			System.out.println("Archiver");
+			archiverDocuments();
+		}
+		else if(s.equals("Quitter l'application")) {
+			System.exit(0);
+		}
+	}
+	
+	
+	//***********************************************************************************************
+	//Création de la page ajouter
+	//***********************************************************************************************
+	private void ajouterDocument() {
+		try {frame.remove(pnlAccueil);} catch(NullPointerException npe) {}
+		try {frame.remove(pnlSupprimer);} catch(NullPointerException npe) {}
+		try {frame.remove(pnlVisualiser);} catch(NullPointerException npe) {}
+		try {frame.remove(pnlAfficherConsole);} catch(NullPointerException npe) {}
+		try {frame.remove(pnlArchiver);}catch(NullPointerException npe) {}
+		
+		pnlAjouter = new JPanel();
+		pnlAjouter.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
+		
+		JLabel lblAjoutTypeDoc = new JLabel("Quel type de document souhaitez-vous ajouter?");
+		
+		String[] strListeTypeDoc = {"Revue", "Journal", "Dvd", "Disque Compact", "Livre", "Dictionnaire"};
+		
+		JComboBox<String> jcbListeTypeDoc = new JComboBox<String>(strListeTypeDoc);
+		jcbListeTypeDoc.setSelectedIndex(0);
+
+		JLabel lblAjoutEspaceur1 = new JLabel(" ");
+		lblAjoutEspaceur1.setPreferredSize(new Dimension(1000, 15));
+		
+		pnlAjouter.add(lblAjoutTypeDoc);
+		pnlAjouter.add(jcbListeTypeDoc);
+		pnlAjouter.add(lblAjoutEspaceur1);
+		
+		frame.add(pnlAjouter, BorderLayout.CENTER);
+		frame.revalidate();
+		frame.repaint();
+		
+		//***********************************************************************************************
+		//Changement de la page selon le type de document
+		//***********************************************************************************************
+		jcbListeTypeDoc.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JComboBox cb = (JComboBox) e.getSource();
+				String type = (String) cb.getSelectedItem();
+				
+				pnlAjouter.removeAll();
+				
+				JLabel lblAjoutTitre = new JLabel("Quel est le titre?");
+				JTextField tfAjoutTitre = new JTextField(10);
+				
+				JLabel lblAjoutDate = new JLabel("Quel est la date de création?");
+				JTextField tfAjoutDate = new JTextField(10);
+				tfAjoutDate.setText("AAAA-MM-JJ");
+				
+				JLabel lblAjoutNbrCopie = new JLabel("Combien de copies de possèdons-nous?");
+				JTextField tfAjoutNbrCopie = new JTextField(10);
+				
+				JLabel lblAjoutCoteDewey = new JLabel("Quel est la cote Dewey?");
+				JTextField tfAjoutCoteDewey = new JTextField(10);
+				
+				JLabel lblAjoutValeur = new JLabel("Quel est la valeur?");
+				JTextField tfAjoutValeur = new JTextField(10);
+				
+				JLabel lblAjoutPeriodicite = new JLabel("Quel est la periodicité?");
+				JTextField tfAjoutPeriodicite = new JTextField(10);
+				
+				JLabel lblAjoutNumPeriode = new JLabel("Quel est le numéro de période?");
+				JTextField tfAjoutNumPeriode = new JTextField(10);
+				
+				JLabel lblAjoutIssn = new JLabel("Quel est l'issn?");
+				JTextField tfAjoutIssn = new JTextField(10);
+				
+				JLabel lblAjoutRegion = new JLabel("Quel est la région?");
+				JTextField tfAjoutRegion = new JTextField(10);
+				
+				JLabel lblAjoutSujet = new JLabel("Quel est le sujet?");
+				JTextField tfAjoutSujet = new JTextField(10);
+				
+				JLabel lblAjoutDuree = new JLabel("Quel est la durée?");
+				JTextField tfAjoutDuree = new JTextField(10);
+				
+				JLabel lblAjoutIsbn = new JLabel("Quel est l'isbn?");
+				JTextField tfAjoutIsbn = new JTextField(10);
+				
+				JLabel lblAjoutCineaste = new JLabel("Quel est le cinéaste ayant réaliser ce film?");
+				JTextField tfAjoutCineaste = new JTextField(10);
+				
+				JLabel lblAjoutAuteur = new JLabel("Qui est l'auteur?");
+				JTextField tfAjoutAuteur = new JTextField(10);
+				
+				JLabel lblAjoutGroupe = new JLabel("Quel est le groupe?");
+				JTextField tfAjoutGroupe = new JTextField(10);
+				
+				JLabel lblAjoutNbrPiste = new JLabel("Combien y a-t-il de pistes?");
+				JTextField tfAjoutNbrPiste = new JTextField(10);
+				
+				JLabel lblAjoutEditeur = new JLabel("Qui est l'éditeur?");
+				JTextField tfAjoutEditeur = new JTextField(10);
+				
+				JLabel lblAjoutCategorie = new JLabel("Quel est la catégorie?");
+				JTextField tfAjoutCategorie = new JTextField(10);
+				
+				JLabel lblAjoutCollection = new JLabel("Quel est le collection?");
+				JTextField tfAjoutCollection = new JTextField(10);
+				
+				JLabel lblAjoutNbrPage = new JLabel("Combien de pages contient ce livre?");
+				JTextField tfAjoutNbrPage = new JTextField(10);
+				
+				JLabel lblAjoutType = new JLabel("Quel est le type du dictionnaire?");
+				JTextField tfAjoutType = new JTextField(10);
+				
+				JButton btnEnvoiAjout = new JButton("Ajouter");
+				
+				
+				pnlAjouter.add(lblAjoutTypeDoc);
+				pnlAjouter.add(jcbListeTypeDoc);
+				pnlAjouter.add(lblAjoutEspaceur1);
+				pnlAjouter.add(lblAjoutTitre);
+				pnlAjouter.add(tfAjoutTitre);
+				pnlAjouter.add(lblAjoutDate);
+				pnlAjouter.add(tfAjoutDate);
+				pnlAjouter.add(lblAjoutNbrCopie);
+				pnlAjouter.add(tfAjoutNbrCopie);
+				pnlAjouter.add(lblAjoutCoteDewey);
+				pnlAjouter.add(tfAjoutCoteDewey);
+				pnlAjouter.add(lblAjoutValeur);
+				pnlAjouter.add(tfAjoutValeur);
+				
+				
+				if(type == "Revue") {
+					pnlAjouter.add(lblAjoutPeriodicite);
+					pnlAjouter.add(tfAjoutPeriodicite);
+					pnlAjouter.add(lblAjoutNumPeriode);
+					pnlAjouter.add(tfAjoutNumPeriode);
+					pnlAjouter.add(lblAjoutIssn);
+					pnlAjouter.add(tfAjoutIssn);
+					pnlAjouter.add(lblAjoutSujet);
+					pnlAjouter.add(tfAjoutSujet);
+					pnlAjouter.add(btnEnvoiAjout);
+				}
+				else if(type == "Journal") {
+					
+					pnlAjouter.add(lblAjoutPeriodicite);
+					pnlAjouter.add(tfAjoutPeriodicite);
+					pnlAjouter.add(lblAjoutNumPeriode);
+					pnlAjouter.add(tfAjoutNumPeriode);
+					pnlAjouter.add(lblAjoutIssn);
+					pnlAjouter.add(tfAjoutIssn);
+					pnlAjouter.add(lblAjoutRegion);
+					pnlAjouter.add(tfAjoutRegion);
+					pnlAjouter.add(btnEnvoiAjout);
+				}
+				else if(type == "Dvd") {
+					
+					pnlAjouter.add(lblAjoutSujet);
+					pnlAjouter.add(tfAjoutSujet);
+					pnlAjouter.add(lblAjoutDuree);
+					pnlAjouter.add(tfAjoutDuree);
+					pnlAjouter.add(lblAjoutIsbn);
+					pnlAjouter.add(tfAjoutIsbn);
+					pnlAjouter.add(lblAjoutCineaste);
+					pnlAjouter.add(tfAjoutCineaste);
+					pnlAjouter.add(btnEnvoiAjout);
+				}
+				else if(type == "Disque Compact") {
+					
+					pnlAjouter.add(lblAjoutSujet);
+					pnlAjouter.add(tfAjoutSujet);
+					pnlAjouter.add(lblAjoutDuree);
+					pnlAjouter.add(tfAjoutDuree);
+					pnlAjouter.add(lblAjoutIsbn);
+					pnlAjouter.add(tfAjoutIsbn);
+					pnlAjouter.add(lblAjoutAuteur);
+					pnlAjouter.add(tfAjoutAuteur);
+					pnlAjouter.add(lblAjoutGroupe);
+					pnlAjouter.add(tfAjoutGroupe);
+					pnlAjouter.add(lblAjoutNbrPiste);
+					pnlAjouter.add(tfAjoutNbrPiste);
+					pnlAjouter.add(btnEnvoiAjout);
+				}
+				else if(type == "Livre") {
+					JLabel lblAjoutEspaceur2 = new JLabel(" ");
+					lblAjoutEspaceur2.setPreferredSize(new Dimension(200, 15));
+					
+					pnlAjouter.add(lblAjoutEditeur);
+					pnlAjouter.add(tfAjoutEditeur);
+					pnlAjouter.add(lblAjoutIsbn);
+					pnlAjouter.add(tfAjoutIsbn);
+					pnlAjouter.add(lblAjoutCategorie);
+					pnlAjouter.add(tfAjoutCategorie);
+					pnlAjouter.add(lblAjoutCollection);
+					pnlAjouter.add(tfAjoutCollection);
+					pnlAjouter.add(lblAjoutAuteur);
+					pnlAjouter.add(tfAjoutAuteur);
+					pnlAjouter.add(lblAjoutEspaceur2);
+					pnlAjouter.add(lblAjoutNbrPage);
+					pnlAjouter.add(tfAjoutNbrPage);
+					pnlAjouter.add(btnEnvoiAjout);
+				}
+				else if(type == "Dictionnaire") {
+	
+					pnlAjouter.add(lblAjoutEditeur);
+					pnlAjouter.add(tfAjoutEditeur);
+					pnlAjouter.add(lblAjoutIsbn);
+					pnlAjouter.add(tfAjoutIsbn);
+					pnlAjouter.add(lblAjoutType);
+					pnlAjouter.add(tfAjoutType);
+					pnlAjouter.add(btnEnvoiAjout);
+				}
+				
+				pnlAjouter.revalidate();
+				pnlAjouter.repaint();
+				
+				//***********************************************************************************************
+				//Création de l'item avec le bouton Ajouter
+				//***********************************************************************************************
+				btnEnvoiAjout.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						boolean sansErreur = true;
+						
+						String strTitre = tfAjoutTitre.getText();
+						
+						String strDate = tfAjoutDate.getText();
+						GregorianCalendar date = new GregorianCalendar();
+						try {
+							date.set(GregorianCalendar.YEAR,Integer.parseInt(strDate.substring(0, 4)));
+							date.set(GregorianCalendar.MONTH,Integer.parseInt(strDate.substring(5, 7)) - 1);
+							date.set(GregorianCalendar.DAY_OF_MONTH,Integer.parseInt(strDate.substring(8, 10)));
+						}
+						catch(NumberFormatException nfe) {
+							System.out.println("Entrer un date au format AAAA-MM-JJ");
+							sansErreur = false;
+						}
+						
+						int iNbrCopie = 0;
+						try {
+							iNbrCopie = Integer.parseInt(tfAjoutNbrCopie.getText());
+						}
+						catch(NumberFormatException nfe) {
+							System.out.println("Entrer un nombre entier pour le nombre de copies");
+							sansErreur = false;
+						}
+						
+						double dCoteDewey = 0;
+						try {
+							dCoteDewey = Double.parseDouble(tfAjoutCoteDewey.getText());
+						}
+						catch(NumberFormatException nfe) {
+							System.out.println("Entrer un nombre réel pour la cote Dewey");
+							sansErreur = false;
+						}
+						
+						double dValeur = 0;
+						try {
+							dValeur = Double.parseDouble(tfAjoutValeur.getText());
+						}
+						catch(NumberFormatException nfe) {
+							System.out.println("Entrer un nombre réel pour la valeur");
+							sansErreur = false;
+						}
+						
+						if(type == "Revue") {
+							String strPeriodicite = tfAjoutPeriodicite.getText();
+							String strNumPeriode = tfAjoutNumPeriode.getText();
+							String strIssn = tfAjoutIssn.getText();
+							String strSujet = tfAjoutSujet.getText();
+							
+							if(sansErreur) {
+								try {
+									Revue revue = new Revue(strTitre, date, iNbrCopie, dCoteDewey, dValeur, strPeriodicite,
+											strNumPeriode, strIssn, strSujet);
+									bdBiblio.ajouter(revue);
+								} catch (ErreurBiblio e1) {
+									System.out.println(e1.message());
+									System.out.println("L'item n'a pas été ajouter à la base de donnée");
+								}
+							}
+							else {
+								System.out.println("L'item n'a pas été ajouter à la base de donnée");
+							}
+						}
+						else if(type == "Journal") {
+							String strPeriodicite = tfAjoutPeriodicite.getText();
+							String strNumPeriode = tfAjoutNumPeriode.getText();
+							String strIssn = tfAjoutIssn.getText();
+							String strRegion = tfAjoutRegion.getText();
+							
+							if(sansErreur) {
+								try {
+									Journal journal = new Journal(strTitre, date, iNbrCopie, dCoteDewey, dValeur, strPeriodicite,
+											strNumPeriode, strIssn, strRegion);
+									bdBiblio.ajouter(journal);
+								} catch (ErreurBiblio e1) {
+									System.out.println(e1.message());
+									System.out.println("L'item n'a pas été ajouter à la base de donnée");
+								}
+							}
+							else {
+								System.out.println("L'item n'a pas été ajouter à la base de donnée");
+							}
+							
+						}
+						else if(type == "Dvd") {
+							String strSujet = tfAjoutSujet.getText();
+							String strIsbn = tfAjoutIsbn.getText();
+	
+							double dDuree = 0;
+							try {
+								dDuree = Double.parseDouble(tfAjoutDuree.getText());
+							}
+							catch(NumberFormatException nfe) {
+								System.out.println("Entrer un nombre réel pour la durée");
+								sansErreur = false;
+							}
+	
+							String strCineaste = tfAjoutCineaste.getText();
+							
+							if(sansErreur) {
+								try {
+									Dvd dvd = new Dvd(strTitre, date, iNbrCopie, dCoteDewey, dValeur, strSujet,
+											strIsbn, dDuree, strCineaste);
+									bdBiblio.ajouter(dvd);
+								} catch (ErreurBiblio e1) {
+									System.out.println(e1.message());
+									System.out.println("L'item n'a pas été ajouter à la base de donnée");
+								}
+							}
+							else {
+								System.out.println("L'item n'a pas été ajouter à la base de donnée");
+							}
+							
+						}
+						else if(type == "Disque Compact") {
+							String strSujet = tfAjoutSujet.getText();
+	
+							double dDuree = 0;
+							try {
+								dDuree = Double.parseDouble(tfAjoutDuree.getText());
+							}
+							catch(NumberFormatException nfe) {
+								System.out.println("Entrer un nombre réel pour la durée");
+								sansErreur = false;
+							}
+	
+							String strIsbn = tfAjoutIsbn.getText();
+							String strAuteur = tfAjoutAuteur.getText();
+							String strGroupe = tfAjoutGroupe.getText();
+	
+							int iNbrPiste = 0;
+							try {
+								iNbrPiste = Integer.parseInt(tfAjoutNbrPiste.getText());
+							}
+							catch(NumberFormatException nfe) {
+								System.out.println("Entrer un nombre entier pour le nombre de pistes");
+								sansErreur = false;
+							}
+							
+							if(sansErreur) {
+								try {
+									DisqueCompact disqueCompact = new DisqueCompact(strTitre, date, iNbrCopie, dCoteDewey, dValeur, strSujet,
+											strIsbn, dDuree, strAuteur, strGroupe, iNbrPiste);
+									bdBiblio.ajouter(disqueCompact);
+								} catch (ErreurBiblio e1) {
+									System.out.println(e1.message());
+									System.out.println("L'item n'a pas été ajouter à la base de donnée");
+								}
+							}
+							else {
+								System.out.println("L'item n'a pas été ajouter à la base de donnée");
+							}
+						}
+						else if(type == "Livre") {
+							String strEditeur = tfAjoutEditeur.getText();
+							String strIsbn = tfAjoutIsbn.getText();
+							String strCategorie = tfAjoutCategorie.getText();
+							String strCollection = tfAjoutCollection.getText();
+							String strAuteur = tfAjoutAuteur.getText();
+							
+							int iNbrPage = 0;
+							try {
+								iNbrPage = Integer.parseInt(tfAjoutNbrPage.getText());
+							}
+							catch(NumberFormatException nfe) {
+								System.out.println("Entrer un nombre entier pour le nombre de page");
+								sansErreur = false;
+							}
+							
+							if(sansErreur) {
+								try {
+									Livre livre = new Livre(strTitre, date, iNbrCopie, dCoteDewey, dValeur, strEditeur,
+											strIsbn, strCategorie, strCollection, strAuteur, iNbrPage);
+									bdBiblio.ajouter(livre);
+								} catch (ErreurBiblio e1) {
+									System.out.println(e1.message());
+									System.out.println("L'item n'a pas été ajouter à la base de donnée");
+								}
+							}
+							else {
+								System.out.println("L'item n'a pas été ajouter à la base de donnée");
+							}
+							
+						}
+						else if(type == "Dictionnaire") {
+							String strEditeur = tfAjoutEditeur.getText();
+							String strIsbn = tfAjoutIsbn.getText();
+							String strType = tfAjoutType.getText();
+							
+							if(sansErreur) {
+								try {
+									Dictionnaire dictionnaire = new Dictionnaire(strTitre, date, iNbrCopie, dCoteDewey, dValeur, strEditeur,
+											strIsbn, strType);
+									bdBiblio.ajouter(dictionnaire);
+								} catch (ErreurBiblio e1) {
+									System.out.println(e1.message());
+									System.out.println("L'item n'a pas été ajouter à la base de donnée");
+								}
+							}
+							else {
+								System.out.println("L'item n'a pas été ajouter à la base de donnée");
+							}
+							
+						}
+						
+					}
+					
+				});
+				
+			}
+			
+		});		
+	}
+	
+	private void supprimerDocument() {
+		try {frame.remove(pnlAccueil);} catch(NullPointerException npe) {}
+		try {frame.remove(pnlAjouter);} catch(NullPointerException npe) {}
+		try {frame.remove(pnlVisualiser);} catch(NullPointerException npe) {}
+		try {frame.remove(pnlAfficherConsole);} catch(NullPointerException npe) {}
+		try {frame.remove(pnlArchiver);}catch(NullPointerException npe) {}
+		
+		frame.revalidate();
+		frame.repaint();
+		
+	}
+	
+	private void modifierDocument() {
+		try {frame.remove(pnlAccueil);} catch(NullPointerException npe) {}
+		try {frame.remove(pnlAjouter);} catch(NullPointerException npe) {}
+		try {frame.remove(pnlSupprimer);} catch(NullPointerException npe) {}
+		try {frame.remove(pnlAfficherConsole);} catch(NullPointerException npe) {}
+		try {frame.remove(pnlArchiver);}catch(NullPointerException npe) {}
+		
+		frame.revalidate();
+		frame.repaint();
+		
+	}
+	
+	private void visualiserDocument() {
+		try {frame.remove(pnlAccueil);} catch(NullPointerException npe) {}
+		try {frame.remove(pnlAjouter);} catch(NullPointerException npe) {}
+		try {frame.remove(pnlSupprimer);} catch(NullPointerException npe) {}
+		try {frame.remove(pnlAfficherConsole);} catch(NullPointerException npe) {}
+		try {frame.remove(pnlArchiver);}catch(NullPointerException npe) {}
+		
+		frame.revalidate();
+		frame.repaint();
+	}
+	
+	private void afficherConsole() {
+		try {frame.remove(pnlAccueil);} catch(NullPointerException npe) {}
+		try {frame.remove(pnlAjouter);} catch(NullPointerException npe) {}
+		try {frame.remove(pnlSupprimer);} catch(NullPointerException npe) {}
+		try {frame.remove(pnlVisualiser);} catch(NullPointerException npe) {}
+		try {frame.remove(pnlArchiver);}catch(NullPointerException npe) {}
+		
+		pnlAfficherConsole = new JPanel();
+		pnlAfficherConsole.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 5));
+		pnlAfficherConsole.setPreferredSize(new Dimension(1295, 37));
+
+		JLabel lblAfficherConsole = new JLabel("Voici les items de la bibliothèque");
+		lblAfficherConsole.setFont(new Font("Arial", Font.BOLD, 36));
+		pnlAfficherConsole.add(lblAfficherConsole);
+		
+		JPanel pnlAfficherPeriodiqueTitre = new JPanel();
+		pnlAfficherPeriodiqueTitre.setPreferredSize(new Dimension(1295, 30));
+		pnlAfficherPeriodiqueTitre.setLayout(new FlowLayout(FlowLayout.LEFT));
+		JLabel lblAfficherPeriodiqueTitre = new JLabel("Périodique :");
+		lblAfficherPeriodiqueTitre.setFont(new Font("Arial", Font.BOLD, 24));
+		pnlAfficherPeriodiqueTitre.add(lblAfficherPeriodiqueTitre);
+		pnlAfficherConsole.add(pnlAfficherPeriodiqueTitre);
+		
+		JPanel pnlAfficherRevueTitre = new JPanel();
+		pnlAfficherRevueTitre.setPreferredSize(new Dimension(1295, 30));
+		pnlAfficherRevueTitre.setLayout(new FlowLayout(FlowLayout.LEFT));
+		JLabel lblAfficherRevueTitre = new JLabel("Revue :");
+		lblAfficherRevueTitre.setFont(new Font("Arial", Font.BOLD, 16));
+		pnlAfficherRevueTitre.add(lblAfficherRevueTitre);
+		pnlAfficherConsole.add(pnlAfficherRevueTitre);
+		
+		for(int i = 0 ; i < bdBiblio.size() ; i++) {
+			if(bdBiblio.lire(i) instanceof Revue) {
+				JPanel pnlAfficherRevue = new JPanel();
+				pnlAfficherRevue.setPreferredSize(new Dimension(1295, 20));
+				pnlAfficherRevue.setLayout(new FlowLayout(FlowLayout.LEFT, 30, 0));
+				JLabel lblAfficherRevue = new JLabel(bdBiblio.lire(i).toString());
+				lblAfficherRevue.setFont(new Font("Arial", Font.PLAIN, 12));
+				pnlAfficherRevue.add(lblAfficherRevue);
+				pnlAfficherConsole.add(pnlAfficherRevue);
+			}
+		}
+		
+		
+		frame.add(pnlAfficherConsole, BorderLayout.CENTER);
+		frame.revalidate();
+		frame.repaint();
+		
+	}
+	
+	private void archiverDocuments() {
+		try {frame.remove(pnlAccueil);} catch(NullPointerException npe) {}
+		try {frame.remove(pnlAjouter);} catch(NullPointerException npe) {}
+		try {frame.remove(pnlSupprimer);} catch(NullPointerException npe) {}
+		try {frame.remove(pnlVisualiser);} catch(NullPointerException npe) {}
+		try {frame.remove(pnlAfficherConsole);} catch(NullPointerException npe) {}
+		
+		frame.revalidate();
+		frame.repaint();
+		
+	}
+
+}

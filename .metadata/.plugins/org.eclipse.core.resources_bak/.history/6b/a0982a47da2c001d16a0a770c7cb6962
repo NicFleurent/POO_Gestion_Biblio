@@ -1,0 +1,28 @@
+package pkEnch2;
+
+import javax.swing.JOptionPane;
+
+public class Ench2No6 
+{
+
+	public static void main(String[] args) 
+	{
+		String strNbrHeure;						//Nombre d'heure
+		String strNbrCir;						//Nombre de circulaires distribués
+		
+		double dNbrHeure;						//Conversion nombre d'heure
+		double dNbrCir;							//Conversion nombre de circulaires distribuées
+		
+		double dSalHeure;						//Salaire en lien avec les heures
+		double dSalCir;							//Salaire en lien avec le nombres de circulaires
+		double dSalTotal;						//Salaire Total
+		
+		strNbrHeure 	= JOptionPane.showInputDialog("Entrez le nombre d'heures.");
+		strNbrCir 		= JOptionPane.showInputDialog("Entrez le nombre de circulaires distribuées.");
+		dNbrHeure		= Double.parseDouble(strNbrHeure);
+		dNbrCir			= Double.parseDouble(strNbrCir);
+		
+
+	}
+
+}

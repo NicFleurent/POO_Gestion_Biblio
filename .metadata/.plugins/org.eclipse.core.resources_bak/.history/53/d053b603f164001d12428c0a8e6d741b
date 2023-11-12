@@ -1,0 +1,33 @@
+package ProjetPersonnel;
+
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+
+/***********************************************************************
+
+Le fichier:			CalculBowling.java
+
+Projet:				Projet Personnel
+
+Objectifs:			Compile les scores de bowling
+
+Logiciel: 			Éclipse 4.16.0
+
+Plateforme:			Windows
+
+Auteur:				Nicolas Fleurent
+
+Date de création:	2022-11-14
+
+***********************************************************************/
+
+public class Bowling 
+{
+
+	public static void main(String[] args) 
+	{
+		
+
+	}
+
+}

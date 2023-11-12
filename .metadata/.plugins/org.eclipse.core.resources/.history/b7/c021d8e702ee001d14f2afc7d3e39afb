@@ -1,0 +1,70 @@
+/***********************************************************************
+
+Le fichier:			Revue.java
+
+Projet:				ProjetSynthese
+
+Objectifs:			Créer des periodiques de type revue
+
+Logiciel: 			Éclipse 4.16.0
+
+Plateforme:			Windows
+
+Auteur:				Nicolas Fleurent
+
+Date de création:	2023-04-17
+
+***********************************************************************/
+
+package pkClasses;
+
+import java.util.GregorianCalendar;
+
+public class Revue extends Periodique {
+	
+	private String sujet;
+
+	public Revue() {
+		super();
+		this.sujet = "non-défini";
+	}
+
+	public Revue(String titre, GregorianCalendar date, int nbrCopies, double coteDewey, double valeur, String periodicite,
+			 String _numPeriode, String issn, String _sujet) throws ErreurBiblio {
+		super(titre, date, nbrCopies, coteDewey, valeur, periodicite, issn, _numPeriode);
+		this.sujet = _sujet;
+	}
+
+	public Revue(Periodique obj, String _sujet) throws ErreurBiblio {
+		super(obj, obj.getPeriodicite(), obj.getIssn(), obj.getNumPeriode());
+		this.sujet = _sujet;
+	}
+
+	public String getSujet() {
+		return sujet;
+	}
+
+	public void setSujet(String sujet) {
+		this.sujet = sujet;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((sujet == null) ? 0 : sujet.hashCode());
+		return result;
+	}
+
+	public boolean equals(Revue obj) {
+		return (super.equals(obj) &&
+				sujet.equals(obj.getSujet()));
+	}
+
+	public String toString() {
+		return super.toString() + System.getProperty ("line.separator") + "sujet=" + sujet;
+	}
+	
+	
+
+}

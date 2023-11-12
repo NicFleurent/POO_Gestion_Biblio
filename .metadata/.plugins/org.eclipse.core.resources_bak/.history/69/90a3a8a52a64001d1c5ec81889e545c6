@@ -1,0 +1,26 @@
+package ProjetPersonnel;
+
+import javax.swing.JOptionPane;
+
+public class CalculBowling 
+{
+
+	public static void main(String[] args) 
+	{
+		String strCar1Coup1;
+		int iCar1Coup1;
+		
+		String strChoixMenu[]	= {	"Jouer une partie",
+									"Visualiser les statistiques",
+									"Quitter l'application"};
+		
+
+		do {
+			
+			
+		} while ()
+		
+		
+	}
+
+}

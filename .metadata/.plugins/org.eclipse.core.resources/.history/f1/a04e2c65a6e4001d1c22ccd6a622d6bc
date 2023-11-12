@@ -1,0 +1,102 @@
+/***********************************************************************
+
+Le fichier:			Periodique.java
+
+Projet:				ProjetSynthese
+
+Objectifs:			Créer un caneva pour les periodiques
+
+Logiciel: 			Éclipse 4.16.0
+
+Plateforme:			Windows
+
+Auteur:				Nicolas Fleurent
+
+Date de création:	2023-04-17
+
+***********************************************************************/
+
+package pkClasses;
+
+import java.util.GregorianCalendar;
+
+public abstract class Periodique extends Item {
+	
+	protected String	periodicite;
+	protected String	issn;
+	protected int		numPeriode;
+	
+	public Periodique() {
+		super();
+		this.periodicite = "non-défini";
+		this.issn =  "non-défini";
+		this.numPeriode = 0;
+	}
+	
+	public Periodique(String titre, GregorianCalendar date, int nbrCopies, double coteDewey, double valeur, 
+						String periodicite, String issn, int _numPeriode) throws ErreurBiblio {
+		super(titre, date, nbrCopies, coteDewey, valeur);
+		this.periodicite = periodicite;
+		this.issn = issn;
+		setNumPeriode(_numPeriode);
+	}
+	
+	public Periodique(Item obj, String periodicite, String issn, int _numPeriode) throws ErreurBiblio {
+		super(obj.getTitre(), obj.getDate(), obj.getNbrCopies(), obj.getCoteDewey(), obj.getValeur());
+		this.periodicite = periodicite;
+		this.issn = issn;
+		setNumPeriode(_numPeriode);
+	}
+
+	public String getPeriodicite() {
+		return periodicite;
+	}
+
+	public void setPeriodicite(String periodicite) {
+		this.periodicite = periodicite;
+	}
+
+	public String getIssn() {
+		return issn;
+	}
+
+	public void setIssn(String issn) {
+		this.issn = issn;
+	}
+
+	public int getNumPeriode() {
+		return numPeriode;
+	}
+
+	public void setNumPeriode(int _numPeriode) throws ErreurBiblio {
+		if(_numPeriode >= 0) {
+			this.numPeriode = _numPeriode;
+		}
+		else {
+			this.numPeriode = 0;
+			throw new ErreurBiblio("negatif");
+		}
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((issn == null) ? 0 : issn.hashCode());
+		result = prime * result + numPeriode;
+		result = prime * result + ((periodicite == null) ? 0 : periodicite.hashCode());
+		return result;
+	}
+
+	public boolean equals(Periodique obj) {
+		return(	super.equals(obj) &&
+				periodicite.equals(obj.getPeriodicite()) &&
+				issn.equals(obj.getIssn()) &&
+				numPeriode == obj.getNumPeriode());
+	}
+
+	public String toString() {
+		return super.toString() + ", periodicite=" + periodicite + ", issn=" + issn + ", numPeriode=" + numPeriode;
+	}
+
+}

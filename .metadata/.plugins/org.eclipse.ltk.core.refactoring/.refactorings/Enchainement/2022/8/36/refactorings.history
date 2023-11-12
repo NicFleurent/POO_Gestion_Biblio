@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Supprimer l’élément de projet &apos;Enchainement&apos;&#x0D;&#x0A;- Projet d&apos;origine : &apos;Enchainement&apos;&#x0D;&#x0A;- Elément d&apos;origine : &apos;pkEnch.EnchN07.java&apos;" description="Supprimer l&apos;élément" element1="/src&lt;pkEnch{EnchN07.java" elements="1" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1661785976261" subPackages="false" version="1.0"/>
+</session>

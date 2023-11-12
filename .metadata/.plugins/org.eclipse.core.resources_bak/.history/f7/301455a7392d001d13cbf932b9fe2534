@@ -1,0 +1,24 @@
+package pkEnch2;
+
+import javax.swing.JOptionPane;
+
+public class Ench2No9 
+{
+
+	public static void main(String[] args) 
+	{
+		String	strSec;					//Nombre de seconde
+		
+		double	dSec;					//Conversion nombre de seconde
+		
+		double	dMin;					//Nombre de minute
+		double	dHeure;					//Nombre d'heure
+		
+		dHeure = Math.floor(dSec / 360);
+		dMin = Math.floor(dSec % 360) / 60);
+		
+		
+
+	}
+
+}

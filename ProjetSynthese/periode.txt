@@ -1,0 +1,81 @@
+periode.txt 2023-05-15 à 10:37:18
+
+titre=7 jours
+date=2023-04-28
+nbrCopies=10
+coteDewey=795.564
+valeur=4.99
+periodicite=Hebdomadaire
+issn=2049-3630
+numPeriode=Vol.34 no.27
+sujet=Art et culture
+
+titre=Coup de pouce
+date=2023-03-01
+nbrCopies=6
+coteDewey=370.87
+valeur=5.99
+periodicite=Mensuelle
+issn=5890-357F
+numPeriode=Vol.40 no.1
+sujet=Cuisine
+
+titre=Fine woodworking
+date=1994-04-01
+nbrCopies=3
+coteDewey=688.546
+valeur=6.95
+periodicite=Bimestriel
+issn=8754-9867
+numPeriode=No.105
+sujet=Ébénisterie
+
+titre=Hockey le magazine
+date=2022-10-01
+nbrCopies=2
+coteDewey=790.5
+valeur=12.95
+periodicite=Bimestriel
+issn=2434-561X
+numPeriode=Volume 17 numéro 2
+sujet=Sport
+
+titre=La Nouvelle Union
+date=2023-05-15
+nbrCopies=15
+coteDewey=70.576
+valeur=0.25
+periodicite=Hebdomadaire
+issn=5196-5876
+numPeriode=15 mai 2023
+region=Arthabaska/Érable
+
+titre=Le Journal de Montréal
+date=1997-07-17
+nbrCopies=1
+coteDewey=70.558
+valeur=0.75
+periodicite=Quotidienne
+issn=7548-985G
+numPeriode=17 juillet 1997
+region=Montréal
+
+titre=Le Nouvelliste
+date=2022-10-01
+nbrCopies=2
+coteDewey=70.575
+valeur=0.5
+periodicite=Quotidienne
+issn=5643-903E
+numPeriode=12 decembre 2012
+region=Mauricie
+
+titre=test
+date=2005-05-06
+nbrCopies=5
+coteDewey=K589.897
+valeur=3.55
+periodicite=Mensuelle
+issn=89955-955J
+numPeriode=Vol.45 no.5
+sujet=Test

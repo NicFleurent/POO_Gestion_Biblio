@@ -1,0 +1,49 @@
+package pkEnch2;
+
+import javax.swing.JOptionPane;
+import java.text.NumberFormat;
+
+public class Ench2No5 
+{
+
+	public static void main(String[] args) 
+	{
+		String strPrixHab;					//Prix de l'habit
+		
+		double dPrixHab;					//Conversion prix de l'habit
+		double dEsc 			= -0.15;	//Escompte
+		double dSousTotal;					//Sous-total
+		double dTauxTps 		= 0.075;	//Taxes fédérales
+		double dCoutTps;					//Coût avec les taxes fédérales
+		double dTauxTvq 		= 0.07;		//Taxes provinciales
+		double dCoutTotalFinal;				//Coût total
+
+		NumberFormat signedollars = NumberFormat.getCurrencyInstance();
+		
+		strPrixHab 	= JOptionPane.showInputDialog("Entrez le prix de l'habit.");
+		dPrixHab 	= Double.parseDouble(strPrixHab);
+		
+		dEsc 			*= dPrixHab;
+		dSousTotal 		= dPrixHab + dEsc;
+		
+		dTauxTps 		*= dSousTotal;
+		dCoutTps 		= dSousTotal + dTauxTps;
+		
+		dTauxTvq		*= dCoutTps;
+		dCoutTotalFinal	= dCoutTps + dTauxTvq;
+		
+		String strRecu = " ";				//Initial la variable pour le JOptionPane.
+		
+		strRecu += "\nCoût de l'habit de base: " + signedollars.format(dPrixHab);
+		strRecu += "\nCoût de l'habit après escompte: " + signedollars.format(dSousTotal);
+		strRecu += "\nTaxes fédérales: " + signedollars.format(dTauxTps);
+		strRecu += "\nTaxes provinciales: " + signedollars.format(dTauxTvq);
+		strRecu += "\nCoût Total: " + signedollars.format(dCoutTotalFinal);
+		
+		JOptionPane.showMessageDialog(null, strRecu, "Coût de l'habit", JOptionPane.PLAIN_MESSAGE);
+		
+		System.exit(0);
+
+	}
+
+}

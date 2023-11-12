@@ -1,0 +1,10 @@
+import java.util.GregorianCalendar;
+
+package pkClasse;
+
+public class Tache {
+	
+	protected String nom;
+	
+
+}

@@ -1,0 +1,65 @@
+/***********************************************************************
+
+Le fichier:			Dictionnaire.java
+
+Projet:				ProjetSynthese
+
+Objectifs:			Créer des volume de type dictionnaire
+
+Logiciel: 			Éclipse 4.16.0
+
+Plateforme:			Windows
+
+Auteur:				Nicolas Fleurent
+
+Date de création:	2023-04-17
+
+***********************************************************************/
+
+package pkClasses;
+
+import java.util.GregorianCalendar;
+
+public class Dictionnaire extends Volume {
+	
+	private String type;
+
+	public Dictionnaire() {
+		super();
+		this.type = "non-défini";
+	}
+
+	public Dictionnaire(String titre, GregorianCalendar date, int _nbrCopies, String _coteDewey, double _valeur,
+			String editeur, String isbn, String type) throws ErreurBiblio {
+		super(titre, date, _nbrCopies, _coteDewey, _valeur, editeur, isbn);
+		this.type = type;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		return result;
+	}
+
+	public boolean equals(Dictionnaire obj) {
+		return(	super.equals(obj) &&
+				type.equals(obj.getType()));
+	}
+
+	public String toString() {
+		return super.toString() + "type=" + type;
+	}
+	
+	
+
+}

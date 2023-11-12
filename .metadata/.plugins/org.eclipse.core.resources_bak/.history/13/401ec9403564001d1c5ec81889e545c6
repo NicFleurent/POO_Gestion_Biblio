@@ -1,0 +1,190 @@
+package ProjetPersonnel;
+
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+
+/***********************************************************************
+
+Le fichier:			CalculBowling.java
+
+Projet:				Projet Personnel
+
+Objectifs:			Compile les scores de bowling
+
+Logiciel: 			Éclipse 4.16.0
+
+Plateforme:			Windows
+
+Auteur:				Nicolas Fleurent
+
+Date de création:	2022-11-14
+
+***********************************************************************/
+
+public class CalculBowling 
+{
+
+	public static void main(String[] args) 
+	{
+		final	int		MAX_CAR			= 10;
+		final	int		TOT_QUILLE		= 10;
+		
+				String	strChoixMenu[]	= {	"Jouer une partie",
+											"Visualiser les statistiques",
+											"Quitter l'application"};
+				String	strAffichage	= "";
+				String	strQuille		= "";
+				String	strScore		= "";
+				
+				int		iChoixMenu		= 0;
+
+				int		iQuille[]		= new int[MAX_CAR];
+				int		iScore[]		= new int[MAX_CAR];
+				
+				char	cQuille[]		= new char[MAX_CAR];
+
+		do {
+			iChoixMenu = JOptionPane.showOptionDialog(	null, 
+														"Sélectionnez votre choix parmi les options suivantes: ",
+														"Menu principal",   			  
+												        JOptionPane.YES_NO_OPTION, 
+														JOptionPane.PLAIN_MESSAGE, 
+														null,
+														strChoixMenu,
+														strChoixMenu[0]);
+			
+			switch (iChoixMenu)
+			{
+			case 0:
+				for(int iCtr = 0 ; iCtr < (MAX_CAR - 1) ; iCtr++)
+				{
+					iQuille[iCtr] = Integer.parseInt(JOptionPane.showInputDialog(null, "1er lancer du carreau #" + (iCtr + 1), "Entrer le nombre de quilles tombées"));
+					
+					if(iQuille[iCtr] != TOT_QUILLE)
+					{
+						iQuille[iCtr] += Integer.parseInt(JOptionPane.showInputDialog(null, "2e lancer du carreau #" + (iCtr + 1), "Entrer le nombre de quilles tombées"));
+						
+						if (iQuille[iCtr] == TOT_QUILLE)
+						{
+							cQuille[iCtr]	= 'R';
+							strQuille 		+= cQuille[iCtr] + "\t";
+						}
+						else
+						{
+							strQuille 		+= iQuille[iCtr] + "\t";
+						}
+					}
+					else
+					{
+						cQuille[iCtr]	= 'A';
+						strQuille 		+= cQuille[iCtr] + "\t";
+					}
+				}
+				
+				iQuille[MAX_CAR - 1] = Integer.parseInt(JOptionPane.showInputDialog(null, "1er lancer du carreau #" + MAX_CAR, "Entrer le nombre de quilles tombées"));
+				
+				if(iQuille[MAX_CAR - 1] != TOT_QUILLE)
+				{
+					iQuille[MAX_CAR - 1] += Integer.parseInt(JOptionPane.showInputDialog(null, "2e lancer du carreau #" + MAX_CAR, "Entrer le nombre de quilles tombées"));
+					
+					if (iQuille[MAX_CAR - 1] == TOT_QUILLE)
+					{
+						cQuille[MAX_CAR - 1]	= 'R';
+						strQuille 				+= cQuille[MAX_CAR - 1];
+						iQuille[MAX_CAR - 1] 	= Integer.parseInt(JOptionPane.showInputDialog(null, "3e lancer du carreau #" + MAX_CAR, "Entrer le nombre de quilles tombées"));
+						
+						if(iQuille[MAX_CAR - 1] == TOT_QUILLE)
+						{
+							cQuille[MAX_CAR - 1]	= 'A';
+							strQuille 				+= cQuille[MAX_CAR - 1];
+						}
+						else
+						{
+							strQuille				+= iQuille[MAX_CAR - 1];
+						}
+					}
+					else
+					{
+						strQuille	 			+= iQuille[MAX_CAR - 1];
+					}
+				}
+				else
+				{
+					cQuille[MAX_CAR - 1]	= 'A';
+					strQuille			 	+= cQuille[MAX_CAR - 1];
+					
+					iQuille[MAX_CAR - 1] = Integer.parseInt(JOptionPane.showInputDialog(null, "2e lancer du carreau #" + MAX_CAR, "Entrer le nombre de quilles tombées"));
+					
+					if (iQuille[MAX_CAR - 1] == TOT_QUILLE)
+					{
+						cQuille[MAX_CAR - 1]	= 'A';
+						strQuille 				+= cQuille[MAX_CAR - 1];
+						iQuille[MAX_CAR - 1] 	= Integer.parseInt(JOptionPane.showInputDialog(null, "3e lancer du carreau #" + MAX_CAR, "Entrer le nombre de quilles tombées"));
+						
+						if(iQuille[MAX_CAR - 1] == TOT_QUILLE)
+						{
+							cQuille[MAX_CAR - 1]	= 'A';
+							strQuille 				+= cQuille[MAX_CAR - 1];
+						}
+						else
+						{
+							strQuille				+= iQuille[MAX_CAR - 1];
+						}
+					}
+					else
+					{
+						iQuille[MAX_CAR - 1] 	+= Integer.parseInt(JOptionPane.showInputDialog(null, "3e lancer du carreau #" + MAX_CAR, "Entrer le nombre de quilles tombées"));
+						
+						if (iQuille[MAX_CAR - 1] == TOT_QUILLE)
+						{
+							cQuille[MAX_CAR - 1]	= 'R';
+							strQuille 				+= cQuille[MAX_CAR - 1];
+						}
+						else
+						{
+							strQuille				+= iQuille[MAX_CAR - 1];
+						}
+					}
+				}
+				
+				for(int iCtr = 0 ; iCtr < (MAX_CAR - 1) ; iCtr++)
+				{
+					if ((cQuille[iCtr] != 'A') || (cQuille[iCtr] != 'R'))
+					{
+						iScore[iCtr] 	= iQuille[iCtr];
+						strScore 		+= iScore[iCtr] + "\t";
+					}
+					else
+						iScore[iCtr]	= TOT_QUILLE;
+					
+					if (iCtr > 1)
+						if (cQuille[iCtr-2] == 'A')
+							iScore[iCtr-2] += iScore[iCtr];
+					
+					if (iCtr > 0)
+						if ((cQuille[iCtr-1] == 'A') || (cQuille[iCtr-1] == 'R'))
+							iScore[iCtr-1] += iScore[iCtr];
+				}
+				break;
+			case 1:
+				strAffichage = "1\t2\t3\t4\t5\t6\t7\t8\t9\t10\n";
+				strAffichage += strQuille + "\n";
+				strAffichage += strScore;
+				JOptionPane.showMessageDialog(null, new JTextArea(strAffichage));
+				break;
+			}
+
+			
+		} while (iChoixMenu != 2);
+		
+		/***********************************************************************
+		Message de fin.
+		***********************************************************************/
+		JOptionPane.showMessageDialog(null, "L'application va terminé, bonne journée.");
+		
+		System.exit(0);
+		
+		
+	}
+
+}

@@ -1,0 +1,70 @@
+/***********************************************************************
+
+Le fichier:			Journal.java
+
+Projet:				ProjetSynthese
+
+Objectifs:			Créer des periodiques de type journal
+
+Logiciel: 			Éclipse 4.16.0
+
+Plateforme:			Windows
+
+Auteur:				Nicolas Fleurent
+
+Date de création:	2023-04-17
+
+***********************************************************************/
+
+package pkClasses;
+
+import java.util.GregorianCalendar;
+
+public class Journal extends Periodique {
+	
+	private String region;
+
+	public Journal(String region) {
+		super();
+		this.region = "non-défini";
+	}
+
+	public Journal(String titre, GregorianCalendar date, int nbrCopies, double coteDewey, double valeur,
+			String periodicite, String issn, int _numPeriode, String region) throws ErreurBiblio {
+		super(titre, date, nbrCopies, coteDewey, valeur, periodicite, issn, _numPeriode);
+		this.region = region;
+	}
+
+	public Journal(Periodique obj, String periodicite, String issn, int _numPeriode, String region) throws ErreurBiblio {
+		super(obj, obj.getPeriodicite(), obj.getIssn(), obj.getNumPeriode());
+		this.region = region;
+	}
+
+	public String getRegion() {
+		return region;
+	}
+
+	public void setRegion(String region) {
+		this.region = region;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((region == null) ? 0 : region.hashCode());
+		return result;
+	}
+
+	public boolean equals(Journal obj) {
+		return (super.equals(obj) &&
+				region.equals(obj.getRegion()));
+	}
+
+	public String toString() {
+		return super.toString() + ", region=" + region;
+	}
+	
+	
+
+}

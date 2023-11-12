@@ -1,0 +1,33 @@
+package pkEnch2;
+
+import javax.swing.JOptionPane;
+import java.text.DecimalFormat;
+
+public class Ench2No9 
+{
+
+	public static void main(String[] args) 
+	{
+		String	strSec;					//Nombre de seconde
+		
+		double	dSec;					//Conversion nombre de seconde
+		
+		double	dMin;					//Nombre de minute
+		double	dHeure;					//Nombre d'heure
+		
+		DecimalFormat zerochiffres = new DecimalFormat("0");
+		
+		strSec 	= JOptionPane.showInputDialog("Entrez le nombre de seconde.");
+		dSec 	= Double.parseDouble(strSec);
+		
+		dHeure 	= Math.floor(dSec / 3600);
+		dMin 	= Math.floor((dSec % 3600) / 60);
+		dSec	%= 60;
+		
+		JOptionPane.showMessageDialog(null, "Cela équivaut à " + zerochiffres.format(dHeure) + " heures, " + zerochiffres.format(dMin) + " minutes et " + zerochiffres.format(dSec) + "secondes.");
+		
+		System.exit(0);
+
+	}
+
+}

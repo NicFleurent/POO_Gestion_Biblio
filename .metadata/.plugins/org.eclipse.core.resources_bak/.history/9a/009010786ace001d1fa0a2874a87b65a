@@ -1,0 +1,128 @@
+package pkTest;
+
+import pkClasse.*;
+import java.util.*;
+
+import javax.swing.JOptionPane;
+
+public class TestTache {
+	
+	final public static int MAXELEMENT = 5;
+	
+	private static Tache donnees[] = 
+		{
+				new Tache("Projet Nouveauté Prog", new GregorianCalendar(2023, 3, 28), new GregorianCalendar(2023, 5, 31), 15, 50, "Bientot fini?"),
+				new Tache("Projet Nouveauté Sys", new GregorianCalendar(2023, 2, 28), new GregorianCalendar(2023, 4, 12), 15, 20, "Pas commencer"),
+				new Tache("Synthèse web", new GregorianCalendar(2023, 4, 15), new GregorianCalendar(2023, 6, 30), 40, 40, "Pas reçu"),
+				new Tache("Quiz BD", new GregorianCalendar(2023, 5, 15), new GregorianCalendar(2023, 5, 15), 1, 15, "Vraiment pas long"),
+				new Tache("Acheter du lait", new GregorianCalendar(2023, 5, 15), new GregorianCalendar(2023, 5, 15), 2, 7, "C'est trop bon"),
+		};
+
+
+	public static void main(String[] args) {
+		
+		ArrayList<Tache> bdTaches;
+		
+		bdTaches = new ArrayList<Tache>(Arrays.asList(donnees));
+		
+		JOptionPane.showMessageDialog(null, "Bienvenue dans le programme de test de la classe Tache.");
+		
+		String[] option  = {"0 - Ajouter une tâche",
+                			"1 - Supprimer une tâche",
+			                "2 - Modifier une tâche",
+			                "3 - Rechercher une tâche",
+			                "4 - Visualiser une tâche",
+			                "5 - Trier les tâches selon le début",
+			                "6 - Trier les tâches selon le nom",
+			                "7 - Trier les tâches selon le coût",
+			                "8 - Visualiser toutes les tâches",
+			                "9 - Voir le nombre de tâches",
+			                "a - Quitter l’application"};
+		
+		String	choix = "";
+		String	listTache = "";
+		
+		char	cChoix = '0';
+		
+		int		choixTache = 0;
+		
+		while ( cChoix != 'a' )
+		{	
+			choix = (String) JOptionPane.showInputDialog ( 	null, 
+														    "Sélectionnez votre choix parmi les options suivantes:", 
+														    "Menu principal",
+														    JOptionPane.QUESTION_MESSAGE, 
+														    null, 
+														    option, 
+														    option[0] );
+			cChoix = choix.charAt(0);
+			
+			switch ( cChoix )
+			{	  
+			case '0':
+				Tache nouvelleTache = new Tache();
+				nouvelleTache.setNom(JOptionPane.showInputDialog("Entrez le nom de la tâche"));
+				
+				nouvelleTache.setDebut(JOptionPane.showInputDialog("Entrez l'année de début de la tâche", "1900-01-01"));
+				
+				nouvelleTache.setFin(JOptionPane.showInputDialog("Entrez l'année de début de la tâche", "1900-01-01"));
+				
+				nouvelleTache.setDuree(Integer.parseInt(JOptionPane.showInputDialog("Entrez la durée en heure de la tâche")));
+				
+				nouvelleTache.setCout(Double.parseDouble(JOptionPane.showInputDialog("Entrez le coût de la tâche")));
+				
+				bdTaches.add(nouvelleTache);
+				break;
+				
+			case '1':
+				//Collections.sort(bdTaches);
+				listTache = "Quelle tâche désirez-vous supprimer?";
+				for(int ctr = 0 ; ctr < bdTaches.size() ; ctr++)
+				{
+					listTache += "\n" + (ctr + 1) + " - " + bdTaches.get(ctr).getNom();
+				}
+				choixTache = Integer.parseInt(JOptionPane.showInputDialog(listTache, "Entrez un des nombres correspondant"));
+				System.out.println(bdTaches.get(choixTache - 1));
+				break;
+				   
+			case '2':
+				
+				break;
+				   
+			case '3':
+				
+				break;
+				   
+			case '4':
+				
+				break;
+				   
+			case '5':
+				
+				break;
+				   
+			case '6':
+				
+				break;
+				   
+			case '7':
+				
+				break;
+				   
+			case '8':
+				JOptionPane.showMessageDialog(null, bdTaches);
+				break;
+				   
+			case '9':
+				
+				break;
+			   
+			case 'a':
+			   JOptionPane.showMessageDialog(null, "Vous allez quitter l'application");
+			
+			}
+		}
+
+	}
+
+}

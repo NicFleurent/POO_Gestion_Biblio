@@ -1,0 +1,68 @@
+package pkEnch2;
+
+import javax.swing.JOptionPane;
+import java.text.NumberFormat;
+
+public class Ench2No3 
+{
+
+	public static void main(String[] args) 
+	{
+		String strNom;					//Saisie du nom de l'élève
+		String strNoteEx1;				//Saisie de la note de l'Examen 1 sur 100
+		String strNoteEx2;				//Saisie de la note de l'Examen 2 sur 100
+		String strNoteEx3;				//Saisie de la note de l'Examen 3 sur 100
+		String strNoteTrav1;			//Saisie de la note du travail 1 sur 100
+		String strNoteTrav2;			//Saisie de la note du travail 1 sur 100
+		String strNoteTrav3;			//Saisie de la note du travail 1 sur 100
+		String strNoteTrav4;			//Saisie de la note du travail 1 sur 100
+		
+		double dNoteEx1;				//Conversion note examen 1
+		double dNoteEx2;				//Conversion note examen 1
+		double dNoteEx3;				//Conversion note examen 1
+		double dNoteTrav1;				//Conversion note travail 1
+		double dNoteTrav2;				//Conversion note travail 1
+		double dNoteTrav3;				//Conversion note travail 1
+		double dNoteTrav4;				//Conversion note travail 1
+		
+		double dPondEx = 0.2;			//Pondération des examens sur la note total
+		double dPondTrav = 0.1;			//Pondération des examens sur la note total
+		
+		double dNoteFinale;				//Variable pour calcul note finale
+		double dNoteArrondi;			//Variable pour arrondir la note finale
+		
+		NumberFormat pourcentage = NumberFormat.getPercentInstance();
+		
+		strNom 			= JOptionPane.showInputDialog("Entrez le nom de l'élève.");
+		strNoteEx1 		= JOptionPane.showInputDialog("Entrez la note de l'examen 1 (sur 100).");
+		strNoteEx2 		= JOptionPane.showInputDialog("Entrez la note de l'examen 2 (sur 100).");
+		strNoteEx3 		= JOptionPane.showInputDialog("Entrez la note de l'examen 3 (sur 100).");
+		strNoteTrav1 	= JOptionPane.showInputDialog("Entrez la note du travail 1 (sur 100).");
+		strNoteTrav2 	= JOptionPane.showInputDialog("Entrez la note du travail 2 (sur 100).");
+		strNoteTrav3 	= JOptionPane.showInputDialog("Entrez la note du travail 3 (sur 100).");
+		strNoteTrav4 	= JOptionPane.showInputDialog("Entrez la note du travail 4 (sur 100).");
+		dNoteEx1		= Double.parseDouble(strNoteEx1);
+		dNoteEx2		= Double.parseDouble(strNoteEx2);
+		dNoteEx3		= Double.parseDouble(strNoteEx3);
+		dNoteTrav1		= Double.parseDouble(strNoteTrav1);
+		dNoteTrav2		= Double.parseDouble(strNoteTrav2);
+		dNoteTrav3		= Double.parseDouble(strNoteTrav3);
+		dNoteTrav4		= Double.parseDouble(strNoteTrav4);
+		
+		dNoteEx1 	*= dPondEx;
+		dNoteEx2 	*= dPondEx;
+		dNoteEx3 	*= dPondEx;
+		dNoteTrav1 	*= dPondTrav;
+		dNoteTrav2 	*= dPondTrav;
+		dNoteTrav3 	*= dPondTrav;
+		dNoteTrav4 	*= dPondTrav;
+		
+		dNoteFinale = dNoteEx1 + dNoteEx2 + dNoteEx3 + dNoteTrav1 + dNoteTrav2 + dNoteTrav3 + dNoteTrav4;
+		//dNoteArrondi = round (dNoteFinale);
+		
+		JOptionPane.showMessageDialog(null, strNom + " a obtenu" + pourcentage.format(dNoteFinale) + "pour son cours de programmation orientée objet.", "Note Finale", JOptionPane.PLAIN_MESSAGE);
+		
+		System.exit(0);
+	}
+
+}

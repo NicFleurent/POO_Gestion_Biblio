@@ -1,0 +1,34 @@
+package pkEnch2;
+
+import javax.swing.JOptionPane;
+
+public class Ench2No1 
+{
+
+	public static void main(String[] args) 
+	{
+		String strCoutBaseBillet;			//Variable pour que l'utilisateur indique le coût du billet
+		double dCoutBaseBillet;				//Conversion du coût de base du billet
+		
+		final double D_PUB = 0.1;			//Constante pour les frais de publicité reliée aux brochures
+		final double D_FRAIS_FIXE = 0.02;	//Constante pour les frais de batiment et d'entretien
+		final double D_PROFIT = 0.15;		//Constante pour les profits
+		final double D_TAUX_TAXE_CULT = 2;	//Constante pour les frais de la taxe de culture
+		final double D_TAUX_TPS = 0.05;		//Constante pour la taxe de TPS
+		final double D_TAUX_TVQ = 0.095;	//Constante pour la taxe de TVQ
+		
+		double dCoutPub;					//Calcul du coût de la publicité
+		double dCoutFraisFixe;				//Calcul du coût des frais de batiment et d'entretien
+		double dCoutProfit;					//Calcul du coût des profits
+		double dCoutTauxTaxeCult;			//Calcul du coût de la taxe culture
+		double dCoutTPS;					//Calcul du coût de la TPS
+		double dCoutTVQ;					//Calcul du coût de la TVQ
+		
+		strCoutBaseBillet = JOptionPane.showInputDialog("Entrez le coût de base du billet.");
+		
+		
+		//dCoutPub = 
+
+	}
+
+}

@@ -1,0 +1,96 @@
+/***********************************************************************
+
+Le fichier:			DisqueCompact.java
+
+Projet:				ProjetSynthese
+
+Objectifs:			Créer des multimedias de type disques compacts
+
+Logiciel: 			Éclipse 4.16.0
+
+Plateforme:			Windows
+
+Auteur:				Nicolas Fleurent
+
+Date de création:	2023-04-17
+
+***********************************************************************/
+
+package pkClasses;
+
+import java.util.GregorianCalendar;
+
+public class DisqueCompact extends Multimedia {
+	
+	private String 	auteur;
+	private String 	groupe;
+	private int		nbrPiste;
+	
+	public DisqueCompact() {
+		super();
+		this.auteur = "non-défini";
+		this.groupe = "non-défini";
+		this.nbrPiste = 0;
+	}
+	
+	public DisqueCompact(String titre, GregorianCalendar date, int _nbrCopies, double _coteDewey, double _valeur,
+			String sujet, String isbn, double _duree, String auteur, String groupe, int _nbrPiste) throws ErreurBiblio {
+		super(titre, date, _nbrCopies, _coteDewey, _valeur, sujet, isbn, _duree);
+		this.auteur = auteur;
+		this.groupe = groupe;setNbrPiste(_nbrPiste);
+	}
+	
+	public DisqueCompact(Multimedia obj, String auteur, String groupe, int _nbrPiste) throws ErreurBiblio {
+		super(obj, obj.getSujet(), obj.getIsbn(), obj.getDuree());
+		this.auteur = auteur;
+		this.groupe = groupe;
+		setNbrPiste(_nbrPiste);
+	}
+	
+	public String getAuteur() {
+		return auteur;
+	}
+	public void setAuteur(String auteur) {
+		this.auteur = auteur;
+	}
+	public String getGroupe() {
+		return groupe;
+	}
+	public void setGroupe(String groupe) {
+		this.groupe = groupe;
+	}
+	public int getNbrPiste() {
+		return nbrPiste;
+	}
+	public void setNbrPiste(int _nbrPiste) throws ErreurBiblio {
+		if(_nbrPiste >= 0) {
+			this.nbrPiste = _nbrPiste;
+		}
+		else {
+			this.nbrPiste = 0;
+			throw new ErreurBiblio("negatif");
+		}
+		
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((auteur == null) ? 0 : auteur.hashCode());
+		result = prime * result + ((groupe == null) ? 0 : groupe.hashCode());
+		result = prime * result + nbrPiste;
+		return result;
+	}
+
+	public boolean equals(DisqueCompact obj) {
+		return(	super.equals(obj) &&
+				auteur.equals(obj.getAuteur()) &&
+				groupe.equals(obj.getGroupe()) &&
+				nbrPiste == obj.getNbrPiste());
+	}
+
+	public String toString() {
+		return super.toString() + ", auteur=" + auteur + ", groupe=" + groupe + ", nbrPiste=" + nbrPiste;
+	}
+}

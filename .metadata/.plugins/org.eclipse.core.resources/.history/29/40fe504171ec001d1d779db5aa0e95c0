@@ -1,0 +1,107 @@
+/***********************************************************************
+
+Le fichier:			Multimedia.java
+
+Projet:				ProjetSynthese
+
+Objectifs:			Créer un caneva pour les multimedias
+
+Logiciel: 			Éclipse 4.16.0
+
+Plateforme:			Windows
+
+Auteur:				Nicolas Fleurent
+
+Date de création:	2023-04-17
+
+***********************************************************************/
+
+package pkClasses;
+
+import java.util.GregorianCalendar;
+
+public abstract class Multimedia extends Item {
+	
+	protected String sujet;
+	protected String isbn;
+	protected double duree;
+	
+	public Multimedia() {
+		super();
+		this.sujet = "non-défini";
+		this.isbn = "non-défini";
+		this.duree = 0;
+	}
+	
+	public Multimedia(String titre, GregorianCalendar date, int _nbrCopies, double _coteDewey, double _valeur, String sujet, String isbn, double _duree)
+			throws ErreurBiblio {
+		super(titre, date, _nbrCopies, _coteDewey, _valeur);
+		this.sujet = sujet;
+		this.isbn = isbn;
+		setDuree(_duree);
+	}
+	
+	public Multimedia(Item obj, String sujet, String isbn, double _duree)
+			throws ErreurBiblio {
+		super(obj.getTitre(), obj.getDate(), obj.getNbrCopies(), obj.getCoteDewey(), obj.getValeur());
+		this.sujet = sujet;
+		this.isbn = isbn;
+		setDuree(_duree);
+	}
+
+	public String getSujet() {
+		return sujet;
+	}
+
+	public void setSujet(String sujet) {
+		this.sujet = sujet;
+	}
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
+	public double getDuree() {
+		return duree;
+	}
+
+	public void setDuree(double _duree) throws ErreurBiblio {
+		if(_duree >= 0) {
+			this.duree = _duree;
+		}
+		else {
+			this.duree = 0;
+			throw new ErreurBiblio("negatif");
+		}
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		long temp;
+		temp = Double.doubleToLongBits(duree);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((isbn == null) ? 0 : isbn.hashCode());
+		result = prime * result + ((sujet == null) ? 0 : sujet.hashCode());
+		return result;
+	}
+
+	public boolean equals(Multimedia obj) {
+		return(	super.equals(obj) &&
+				sujet.equals(obj.getSujet()) &&
+				isbn.equals(obj.getIsbn()) &&
+				duree == obj.getDuree());
+	}
+
+	public String toString() {
+		return super.toString() + "sujet=" + sujet + System.getProperty ("line.separator") + "isbn=" + isbn + System.getProperty ("line.separator") + "duree=" + duree;
+	}
+	
+	
+
+}

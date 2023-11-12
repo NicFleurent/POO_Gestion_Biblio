@@ -1,0 +1,14 @@
+package pkTab2DSup;
+
+import javax.swing.*;
+
+public class Tab2DSupNo1 
+{
+
+	public static void main(String[] args) 
+	{
+		
+
+	}
+
+}

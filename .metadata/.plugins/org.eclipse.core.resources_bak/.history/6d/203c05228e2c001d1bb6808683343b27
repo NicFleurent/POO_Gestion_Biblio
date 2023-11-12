@@ -1,0 +1,44 @@
+package pkEnch2;
+
+import javax.swing.JOptionPane;
+import java.text.NumberFormat;
+
+public class Ench2No1 
+{
+
+	public static void main(String[] args) 
+	{
+		String strCoutBaseBillet;			//Variable pour que l'utilisateur indique le coût du billet
+		double dCoutBaseBillet;				//Conversion du coût de base du billet
+		
+		final double D_TAUX_TAXE_CULT = 2;	//Constante pour les frais de la taxe de culture
+		
+		double dCoutPub = 0.1;					//Variable du coût de la publicité
+		double dCoutFraisFixe = 0.02;			//Variable du coût des frais de batiment et d'entretien
+		double dCoutProfit = 0.15;				//Variable du coût des profits
+		double dCoutTPS = 0.05;					//Variable du coût de la TPS
+		double dCoutTVQ = 0.095;				//Variable du coût de la TVQ
+		
+		double dCoutFinal;						//Variable du calcul du cout final du billet
+		
+		NumberFormat signedollars = NumberFormat.getCurrencyInstance();
+		
+		strCoutBaseBillet = JOptionPane.showInputDialog("Entrez le coût de base du billet.");
+		dCoutBaseBillet = Double.parseDouble(strCoutBaseBillet);
+		
+		dCoutPub 			*= dCoutBaseBillet;
+		dCoutFraisFixe 		*= dCoutBaseBillet;
+		dCoutProfit 		*= dCoutBaseBillet;
+		dCoutTPS			*= dCoutBaseBillet;
+		dCoutTVQ			*= dCoutBaseBillet;
+		
+		dCoutFinal			= dCoutBaseBillet + dCoutPub + dCoutFraisFixe + dCoutProfit + D_TAUX_TAXE_CULT + dCoutTPS + dCoutTVQ;
+		
+		JOptionPane.showMessageDialog(null, "Le  coût du billet sera de: " + signedollars.format(dCoutFinal));
+		
+		System.exit(0);
+		
+
+	}
+
+}

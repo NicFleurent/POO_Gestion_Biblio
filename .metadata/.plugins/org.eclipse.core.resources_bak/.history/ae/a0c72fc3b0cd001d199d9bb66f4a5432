@@ -1,0 +1,153 @@
+package pkClasse;
+
+import java.util.*;
+
+public class Tache implements Comparable<Tache>, Comparator<Tache> {
+	
+	protected 	String 				nom;
+	protected 	GregorianCalendar 	debut;
+	protected 	GregorianCalendar 	fin;
+	protected 	int					duree;
+	protected 	double				cout;
+	protected	String				commentaire;
+	
+	public Tache() {
+		this.nom = "n/d";
+		this.debut = new GregorianCalendar();
+		this.fin = new GregorianCalendar();
+		this.duree = 0;
+		this.cout = 0;
+		this.commentaire = "aucun";
+	}
+	
+	public Tache(String nom, GregorianCalendar debut, GregorianCalendar fin, int duree, double cout,
+			String commentaire) {
+		this.nom = nom;
+		this.debut = debut;
+		this.fin = fin;
+		setDuree(duree);
+		setCout(cout);
+		this.commentaire = commentaire;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public GregorianCalendar getDebut() {
+		return debut;
+	}
+
+	public void setDebut(GregorianCalendar debut) {
+		this.debut = debut;
+	}
+
+	public void setDebut(String date) {
+		debut.set(GregorianCalendar.YEAR,Integer.parseInt(date.substring(0, 4)));
+		debut.set(GregorianCalendar.MONTH,Integer.parseInt(date.substring(5, 7)));
+		debut.set(GregorianCalendar.DAY_OF_MONTH,Integer.parseInt(date.substring(8, 10)));
+	}
+
+	public GregorianCalendar getFin() {
+		return fin;
+	}
+
+	public void setFin(GregorianCalendar fin) {
+		this.fin = fin;
+	}
+
+	public void setFin(String date) {
+		fin.set(GregorianCalendar.YEAR,Integer.parseInt(date.substring(0, 4)));
+		fin.set(GregorianCalendar.MONTH,Integer.parseInt(date.substring(5, 7)));
+		fin.set(GregorianCalendar.DAY_OF_MONTH,Integer.parseInt(date.substring(8, 10)));
+	}
+
+	public int getDuree() {
+		return duree;
+	}
+
+	public void setDuree(int _duree) {
+		if(_duree >= 0)
+		{
+			duree = _duree;
+		}
+		else
+			duree = 0;
+	}
+
+	public double getCout() {
+		return cout;
+	}
+
+	public void setCout(double _cout) {
+		if(_cout >= 0)
+		{
+			cout = _cout;
+		}
+		else
+			cout = 0;
+	}
+
+	public String getCommentaire() {
+		return commentaire;
+	}
+
+	public void setCommentaire(String commentaire) {
+		this.commentaire = commentaire;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((commentaire == null) ? 0 : commentaire.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(cout);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((debut == null) ? 0 : debut.hashCode());
+		result = prime * result + duree;
+		result = prime * result + ((fin == null) ? 0 : fin.hashCode());
+		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
+		return result;
+	}
+
+	public boolean equals(Tache uneTache) {
+		
+		return(	nom.equals(uneTache.nom) &&
+				debut.equals(uneTache.debut) &&
+				fin.equals(uneTache.fin) &&
+				duree == uneTache.getDuree() &&
+				cout == uneTache.getCout() &&
+				commentaire.equals(uneTache.commentaire));
+	}
+
+	public String toString() {
+		return "\nTache [nom=" + nom + ", debut=" + debut.getTime() + ", fin=" + fin.getTime() + ", duree=" + duree + ", cout=" + cout
+				+ ", commentaire=" + commentaire + "]";
+	}
+	
+	public int compareTo(Tache uneTache) {
+		int resultat;
+		
+		if(debut.before(uneTache.getDebut())) {
+			resultat = -1;
+		}
+		else if(debut.equals(uneTache.getDebut())) {
+			resultat = 0;
+		}
+		else
+			resultat = 1;
+		
+		return resultat;
+	}
+
+	public int compare(Tache uneTache, Tache deuxTache) {
+		return uneTache.getNom().compareTo(deuxTache.getNom());
+	}
+	
+
+}

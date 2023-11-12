@@ -1,0 +1,10 @@
+package pkTest;
+
+public class TestBiblio {
+
+	public static void main(String[] args) {
+		// TODO Stub de la méthode généré automatiquement
+
+	}
+
+}

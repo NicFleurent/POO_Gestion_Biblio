@@ -1,0 +1,13 @@
+package pkEnch2;
+
+public class EnchNo6 
+{
+
+	public static void main(String[] args) 
+	{
+		String strNbrHeure;						//Nombre d'heure
+		
+
+	}
+
+}

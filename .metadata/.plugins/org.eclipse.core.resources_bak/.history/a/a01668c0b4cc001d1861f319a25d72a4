@@ -1,0 +1,89 @@
+import java.util.*;
+
+public class Personne implements Comparable, Comparator {
+	private String nom;
+	private String prenom;
+	private int age;
+	private String concentration;
+	private String ville;
+	
+	
+	
+	public String getNom() {
+		return nom;
+	}
+
+
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+
+
+	public int getAge() {
+		return age;
+	}
+
+
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+
+
+	public String getConcentration() {
+		return concentration;
+	}
+
+
+
+	public void setConcentration(String concentration) {
+		this.concentration = concentration;
+	}
+
+
+
+	public String getVille() {
+		return ville;
+	}
+
+
+
+	public void setVille(String ville) {
+		this.ville = ville;
+	}
+
+
+	@Override
+	public int compareTo(Personne unePersonne) {
+		int resultat;
+		
+		if(nom.compareTo(unePersonne.getNom()) == 0) {
+			resultat = prenom.compareTo(unePersonne.getPrenom());
+			return resultat;
+		}
+		else {
+			resultat = nom.compareTo(unePersonne.getNom());
+			return resultat;
+		}	
+	}
+	
+	@Override
+	public int compare(Personne unePersonne, Personne deuxPersonne) {
+		return unePersonne.getVille().compareTo(deuxPersonne.getVille());
+	}
+}

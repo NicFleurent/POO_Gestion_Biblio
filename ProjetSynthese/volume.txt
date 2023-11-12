@@ -1,0 +1,85 @@
+volume.txt 2023-05-15 à 10:37:18
+
+titre=Dictionnaire de poche français-espagnol
+date=2022-08-01
+nbrCopies=25
+coteDewey=440.788
+valeur=13.95
+editeur=Larousse
+isbn=978-2-03602-187-7
+type=espagnole-français
+
+titre=La pierre du destin
+date=2008-09-02
+nbrCopies=5
+coteDewey=C840.568
+valeur=24.95
+editeur=Édition Michel Quintin
+isbn=978-2-89435-384-4
+categorie=Fantastique
+collection=Les messagers de gaïa
+auteur=Fredrick D'Anterny
+nbrPage=336
+
+titre=Le Petit Larousse illustré 2023
+date=2022-07-01
+nbrCopies=25
+coteDewey=440.598
+valeur=56.95
+editeur=Larousse
+isbn=978-2-03593-868-8
+type=francais
+
+titre=Le Petit Robert de la langue française 2023
+date=2022-02-01
+nbrCopies=25
+coteDewey=440.589
+valeur=84.95
+editeur=Robert Ed LE
+isbn=978-2-32101-763-9
+type=francais
+
+titre=Le Robert & Collins poche anglais : anglais-français
+date=2021-07-01
+nbrCopies=10
+coteDewey=440.998
+valeur=12.95
+editeur=Robert Ed LE
+isbn=978-2-32101-661-8
+type=anglais-français
+
+titre=Les 3 mousquetaires
+date=2016-08-02
+nbrCopies=3
+coteDewey=840.548
+valeur=29.95
+editeur=Groupe Archambault
+isbn=622-2-091525-80
+categorie=Romans Étrangers
+collection=non-applicable
+auteur=Alexandre Dumas
+nbrPage=620
+
+titre=Pierre Gervais
+date=2020-05-05
+nbrCopies=5
+coteDewey=950.65
+valeur=25.99
+editeur=Test
+isbn=978-99556-5-F
+categorie=Biographie
+collection=non-d.fini
+auteur=Pierre Gervais
+nbrPage=350
+
+titre=Sauces barbecue : marinades pour les grillades
+date=2023-04-17
+nbrCopies=5
+coteDewey=370.558
+valeur=34.95
+editeur=Homme
+isbn=978-2-761961-882
+categorie=Bases & Techniques
+collection=non-applicable
+auteur=Steven Raichlen
+nbrPage=216

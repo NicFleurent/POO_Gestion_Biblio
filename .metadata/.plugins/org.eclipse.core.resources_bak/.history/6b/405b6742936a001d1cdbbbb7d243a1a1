@@ -1,0 +1,16 @@
+package pkTab2DSup;
+
+import javax.swing.*;
+
+public class Tab2DSupNo2 
+{
+
+	public static void main(String[] args) 
+	{
+		final	int		MAX_ETU			= 5;															//Nombre maximal d'étudiant
+		final	int		MAX_QUESTION	= 15;															//nombre maximal de question
+				char	cQuestion[][]	= new char[5][15];												//Questionnaire
+
+	}
+
+}

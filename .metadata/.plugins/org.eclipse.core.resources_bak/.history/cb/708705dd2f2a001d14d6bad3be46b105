@@ -1,0 +1,33 @@
+package ProjetPersonnel;
+
+public class CalculBowling 
+{
+
+	public static void main(String[] args) 
+	{
+		String strCar1Coup1;
+		String strCar1Coup2;
+		String strCar2Coup1;
+		String strCar2Coup1;
+		String strCar3Coup1;
+		String strCar3Coup1;
+		String strCar4Coup1;
+		String strCar4Coup1;
+		String strCar5Coup1;
+		String strCar5Coup1;
+		String strCar6Coup1;
+		String strCar6Coup1;
+		String strCar7Coup1;
+		String strCar7Coup1;
+		String strCar8Coup1;
+		String strCar8Coup1;
+		String strCar9Coup1;
+		String strCar9Coup1;
+		String strCar10Coup1;
+		String strCar10Coup1;
+		String strCar10Coup1;
+		
+
+	}
+
+}

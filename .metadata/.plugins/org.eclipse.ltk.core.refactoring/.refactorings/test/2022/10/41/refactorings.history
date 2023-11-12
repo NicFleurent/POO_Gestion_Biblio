@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Déplacer l’élément « TantQueNo2.java » dans « TantQue/src/pkTantQue »&#x0D;&#x0A;- Projet d&apos;origine : &apos;test&apos;&#x0D;&#x0A;- Elément de destination : &apos;TantQue/src/pkTantQue&apos;&#x0D;&#x0A;- Elément d&apos;origine : &apos;TantQueNo2.java&apos;&#x0D;&#x0A;- Mettre à jour les références d&apos;un élément restructuré" description="Déplacer le fichier" destination="=TantQue/src&lt;pkTantQue" element1="TantQueNo2.java" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1665075353795" units="0" version="1.0"/>
+</session>

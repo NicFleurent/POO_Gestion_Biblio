@@ -1,0 +1,369 @@
+package pkTest;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.GregorianCalendar;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class MainFrame implements ActionListener {
+	
+	private JFrame frame;
+	
+	private JPanel menu;
+	private JPanel pnlAccueil;
+	private JPanel pnlAjouter;
+	private JPanel pnlAjouterBas;
+	private JPanel pnlSupprimer;
+	private JPanel pnlVisualiser;
+	private JPanel pnlAfficherConsole;
+	private JPanel pnlArchiver;
+	
+	private JButton btnAjouter;
+	private JButton btnSupprimer;
+	private JButton btnModifer;
+	private JButton btnVisualiser;
+	private JButton btnAfficherConsole;
+	private JButton btnArchiver;
+	private JButton btnQuitter;
+	
+	private JLabel lblAccueil;
+	
+	public MainFrame() {
+		initialize();
+	}
+	
+	//Prépare la fenêtre principal avec le menu et la page d'accueil
+	private void initialize() {
+		frame = new JFrame();
+		frame.setTitle("JCheckBox Demo");
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.setSize(1500, 800);
+		frame.setMinimumSize(new Dimension(1300, 500));
+		frame.setLayout(new BorderLayout(10, 10));
+		frame.setLocationRelativeTo(null);
+		
+		menu = new JPanel();
+		menu.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 5));
+		menu.setBackground(Color.GRAY);
+		
+		btnAjouter = new JButton("Ajouter un document");
+		btnAjouter.addActionListener(this);
+		menu.add(btnAjouter);
+		
+		btnSupprimer = new JButton("Supprimer un document");
+		btnSupprimer.addActionListener(this);
+		menu.add(btnSupprimer);
+		
+		btnModifer = new JButton("Modifier un document");
+		btnModifer.addActionListener(this);
+		menu.add(btnModifer);
+		
+		btnVisualiser = new JButton("Visualiser un document");
+		btnVisualiser.addActionListener(this);
+		menu.add(btnVisualiser);
+		
+		btnAfficherConsole = new JButton("Afficher les documents (console)");
+		btnAfficherConsole.addActionListener(this);
+		menu.add(btnAfficherConsole);
+		
+		btnArchiver = new JButton("Archiver les documents");
+		btnArchiver.addActionListener(this);
+		menu.add(btnArchiver);
+		
+		btnQuitter = new JButton("Quitter l'application");
+		btnQuitter.addActionListener(this);
+		menu.add(btnQuitter);
+		
+		pnlAccueil = new JPanel();
+		pnlAccueil.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 5));
+		
+		lblAccueil = new JLabel("Bienvenue dans l'application de gestion de la bibliothèque");
+		lblAccueil.setFont(new Font("Sans-serif", Font.BOLD, 36));
+		
+		pnlAccueil.add(lblAccueil);
+		
+		frame.add(menu, BorderLayout.NORTH);
+		frame.add(pnlAccueil, BorderLayout.CENTER);
+		
+		
+	}
+
+	//Permet d'afficher la page
+	public void show() {
+		frame.setVisible(true);
+	}
+	
+	//Donne les effets aux boutons du menu
+	public void actionPerformed(ActionEvent e) {
+		String s = e.getActionCommand();
+		if(s.equals("Ajouter un document")) {
+			System.out.println("Ajouter");
+			ajouterDocument();
+		}
+		else if(s.equals("Supprimer un document")) {
+			System.out.println("Supprimer");
+		}
+		else if(s.equals("Modifier un document")) {
+			System.out.println("Modifier");
+		}
+		else if(s.equals("Visualiser un document")) {
+			System.out.println("Visualiser");
+		}
+		else if(s.equals("Afficher les documents (console)")) {
+			System.out.println("Afficher");
+		}
+		else if(s.equals("Archiver les documents")) {
+			System.out.println("Archiver");
+		}
+		else if(s.equals("Quitter l'application")) {
+			System.exit(0);
+		}
+	}
+	
+	//Afficher correctement la page
+	private void ajouterDocument() {
+		frame.remove(pnlAccueil);
+		
+		pnlAjouter = new JPanel();
+		pnlAjouter.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
+		
+		JLabel lblAjoutTypeDoc = new JLabel("Quel type de document souhaitez-vous ajouter?");
+		
+		String[] strListeTypeDoc = {"Revue", "Journal", "Dvd", "Disque Compact", "Livre", "Dictionnaire"};
+		
+		JComboBox<String> jcbListeTypeDoc = new JComboBox<String>(strListeTypeDoc);
+		jcbListeTypeDoc.setSelectedIndex(4);
+		jcbListeTypeDoc.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JComboBox cb = (JComboBox) e.getSource();
+				String type = (String) cb.getSelectedItem();
+				
+				pnlAjouter.removeAll();
+				
+				JLabel lblAjoutTitre = new JLabel("Quel est le titre?");
+				JTextField tfAjoutTitre = new JTextField(10);
+				
+				JLabel lblAjoutDate = new JLabel("Quel est la date de création?");
+				JTextField tfAjoutDate = new JTextField(10);
+				tfAjoutDate.setText("AAAA-MM-JJ");
+				
+				JLabel lblAjoutNbrCopie = new JLabel("Combien de copies de possèdons-nous?");
+				JTextField tfAjoutNbrCopie = new JTextField(10);
+				
+				JLabel lblAjoutCoteDewey = new JLabel("Quel est la cote Dewey?");
+				JTextField tfAjoutCoteDewey = new JTextField(10);
+				
+				JLabel lblAjoutValeur = new JLabel("Quel est la valeur?");
+				JTextField tfAjoutValeur = new JTextField(10);
+				
+				JLabel lblAjoutPeriodicite = new JLabel("Quel est la periodicité?");
+				JTextField tfAjoutPeriodicite = new JTextField(10);
+				
+				JLabel lblAjoutNumPeriode = new JLabel("Quel est le numéro de période?");
+				JTextField tfAjoutNumPeriode = new JTextField(10);
+				
+				JLabel lblAjoutIssn = new JLabel("Quel est l'issn?");
+				JTextField tfAjoutIssn = new JTextField(10);
+				
+				JLabel lblAjoutRegion = new JLabel("Quel est la région?");
+				JTextField tfAjoutRegion = new JTextField(10);
+				
+				JLabel lblAjoutSujet = new JLabel("Quel est le sujet?");
+				JTextField tfAjoutSujet = new JTextField(10);
+				
+				JLabel lblAjoutDuree = new JLabel("Quel est la durée?");
+				JTextField tfAjoutDuree = new JTextField(10);
+				
+				JLabel lblAjoutIsbn = new JLabel("Quel est l'isbn?");
+				JTextField tfAjoutIsbn = new JTextField(10);
+				
+				JLabel lblAjoutCineaste = new JLabel("Quel est le cinéaste ayant réaliser ce film?");
+				JTextField tfAjoutCineaste = new JTextField(10);
+				
+				JLabel lblAjoutAuteur = new JLabel("Qui est l'auteur?");
+				JTextField tfAjoutAuteur = new JTextField(10);
+				
+				JLabel lblAjoutGroupe = new JLabel("Quel est le groupe?");
+				JTextField tfAjoutGroupe = new JTextField(10);
+				
+				JLabel lblAjoutNbrPiste = new JLabel("Combien y a-t-il de pistes?");
+				JTextField tfAjoutNbrPiste = new JTextField(10);
+				
+				JLabel lblAjoutEditeur = new JLabel("Qui est l'éditeur?");
+				JTextField tfAjoutEditeur = new JTextField(10);
+				
+				JLabel lblAjoutCategorie = new JLabel("Quel est la catégorie?");
+				JTextField tfAjoutCategorie = new JTextField(10);
+				
+				JLabel lblAjoutCollection = new JLabel("Quel est le collection?");
+				JTextField tfAjoutCollection = new JTextField(10);
+				
+				JLabel lblAjoutNbrPage = new JLabel("Combien de pages contient ce livre?");
+				JTextField tfAjoutNbrPage = new JTextField(10);
+				
+				JLabel lblAjoutType = new JLabel("Quel est le type du dictionnaire?");
+				JTextField tfAjoutType = new JTextField(10);
+				
+				JButton btnEnvoiAjout = new JButton("Envoyer");
+				btnEnvoiAjout.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						String strTitre = tfAjoutTitre.getText();
+						System.out.println(strTitre);
+						
+						String strDate = tfAjoutDate.getText();
+						GregorianCalendar date = new GregorianCalendar();
+						date.set(GregorianCalendar.YEAR,Integer.parseInt(strDate.substring(0, 4)));
+						date.set(GregorianCalendar.MONTH,Integer.parseInt(strDate.substring(5, 7)) - 1);
+						date.set(GregorianCalendar.DAY_OF_MONTH,Integer.parseInt(strDate.substring(8, 10)));
+						System.out.println(date.getTime());
+						
+						int iNbrCopie = Integer.parseInt(tfAjoutNbrCopie.getText());
+						System.out.println(iNbrCopie);
+						
+						double dCoteDewey = Double.parseDouble(tfAjoutCoteDewey.getText());
+						System.out.println(dCoteDewey);
+						
+						double dValeur = Double.parseDouble(tfAjoutValeur.getText());
+						System.out.println(dCoteDewey);
+
+						String strPeriodicite = tfAjoutPeriodicite.getText();
+						System.out.println(strPeriodicite);
+
+						String strNumPeriode = tfAjoutNumPeriode.getText();
+						System.out.println(strNumPeriode);
+
+						String strIssn = tfAjoutIssn.getText();
+						System.out.println(strIssn);
+
+						String strSujet = tfAjoutSujet.getText();
+						System.out.println(strSujet);
+						
+						
+						
+					}
+					
+				});
+				
+				pnlAjouter.add(lblAjoutTypeDoc);
+				pnlAjouter.add(jcbListeTypeDoc);
+				pnlAjouter.add(lblAjoutTitre);
+				pnlAjouter.add(tfAjoutTitre);
+				pnlAjouter.add(lblAjoutDate);
+				pnlAjouter.add(tfAjoutDate);
+				pnlAjouter.add(lblAjoutNbrCopie);
+				pnlAjouter.add(tfAjoutNbrCopie);
+				pnlAjouter.add(lblAjoutCoteDewey);
+				pnlAjouter.add(tfAjoutCoteDewey);
+				pnlAjouter.add(lblAjoutValeur);
+				pnlAjouter.add(tfAjoutValeur);
+				
+				
+				if(type == "Revue") {
+					pnlAjouter.add(lblAjoutPeriodicite);
+					pnlAjouter.add(tfAjoutPeriodicite);
+					pnlAjouter.add(lblAjoutNumPeriode);
+					pnlAjouter.add(tfAjoutNumPeriode);
+					pnlAjouter.add(lblAjoutIssn);
+					pnlAjouter.add(tfAjoutIssn);
+					pnlAjouter.add(lblAjoutSujet);
+					pnlAjouter.add(tfAjoutSujet);
+					pnlAjouter.add(btnEnvoiAjout);
+				}
+				else if(type == "Journal") {
+					
+					pnlAjouter.add(lblAjoutPeriodicite);
+					pnlAjouter.add(tfAjoutPeriodicite);
+					pnlAjouter.add(lblAjoutNumPeriode);
+					pnlAjouter.add(tfAjoutNumPeriode);
+					pnlAjouter.add(lblAjoutIssn);
+					pnlAjouter.add(tfAjoutIssn);
+					pnlAjouter.add(lblAjoutRegion);
+					pnlAjouter.add(tfAjoutRegion);
+					pnlAjouter.add(btnEnvoiAjout);
+				}
+				else if(type == "Dvd") {
+					
+					pnlAjouter.add(lblAjoutSujet);
+					pnlAjouter.add(tfAjoutSujet);
+					pnlAjouter.add(lblAjoutDuree);
+					pnlAjouter.add(tfAjoutDuree);
+					pnlAjouter.add(lblAjoutIsbn);
+					pnlAjouter.add(tfAjoutIsbn);
+					pnlAjouter.add(lblAjoutCineaste);
+					pnlAjouter.add(tfAjoutCineaste);
+					pnlAjouter.add(btnEnvoiAjout);
+				}
+				else if(type == "Disque Compact") {
+					
+					pnlAjouter.add(lblAjoutSujet);
+					pnlAjouter.add(tfAjoutSujet);
+					pnlAjouter.add(lblAjoutDuree);
+					pnlAjouter.add(tfAjoutDuree);
+					pnlAjouter.add(lblAjoutIsbn);
+					pnlAjouter.add(tfAjoutIsbn);
+					pnlAjouter.add(lblAjoutAuteur);
+					pnlAjouter.add(tfAjoutAuteur);
+					pnlAjouter.add(lblAjoutGroupe);
+					pnlAjouter.add(tfAjoutGroupe);
+					pnlAjouter.add(lblAjoutNbrPiste);
+					pnlAjouter.add(tfAjoutNbrPiste);
+					pnlAjouter.add(btnEnvoiAjout);
+				}
+				else if(type == "Livre") {
+	
+					pnlAjouter.add(lblAjoutEditeur);
+					pnlAjouter.add(tfAjoutEditeur);
+					pnlAjouter.add(lblAjoutIsbn);
+					pnlAjouter.add(tfAjoutIsbn);
+					pnlAjouter.add(lblAjoutCategorie);
+					pnlAjouter.add(tfAjoutCategorie);
+					pnlAjouter.add(lblAjoutCollection);
+					pnlAjouter.add(tfAjoutCollection);
+					pnlAjouter.add(lblAjoutAuteur);
+					pnlAjouter.add(tfAjoutAuteur);
+					pnlAjouter.add(lblAjoutNbrPage);
+					pnlAjouter.add(tfAjoutNbrPage);
+					pnlAjouter.add(btnEnvoiAjout);
+				}
+				else if(type == "Dictionnaire") {
+	
+					pnlAjouter.add(lblAjoutEditeur);
+					pnlAjouter.add(tfAjoutEditeur);
+					pnlAjouter.add(lblAjoutIsbn);
+					pnlAjouter.add(tfAjoutIsbn);
+					pnlAjouter.add(lblAjoutType);
+					pnlAjouter.add(tfAjoutType);
+					pnlAjouter.add(btnEnvoiAjout);
+				}
+				
+				pnlAjouter.revalidate();
+				pnlAjouter.repaint();
+				
+			}
+			
+		});
+		
+		pnlAjouter.add(lblAjoutTypeDoc);
+		pnlAjouter.add(jcbListeTypeDoc);
+		
+		frame.add(pnlAjouter, BorderLayout.CENTER);
+		frame.revalidate();
+		frame.repaint();		
+	}
+
+}

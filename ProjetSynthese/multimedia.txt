@@ -1,0 +1,89 @@
+multimedia.txt 2023-05-15 à 10:37:18
+
+titre=Avatar
+date=2009-12-18
+nbrCopies=2
+coteDewey=520.568
+valeur=14.99
+sujet=Science-Fiction
+isbn=978-3-10-145687-0
+duree=162.0
+cineaste=James Cameron
+
+titre=Divisions
+date=2019-09-13
+nbrCopies=2
+coteDewey=780.589
+valeur=14.99
+sujet=Hard rock
+isbn=978-4-55-544354-6
+duree=58.5
+auteur=Dustin Bates et Peter David
+groupe=Starset
+nbrPiste=13
+
+titre=Les Benchwarmers
+date=2006-04-07
+nbrCopies=1
+coteDewey=790.584
+valeur=4.99
+sujet=Baseball-Comédie
+isbn=978-3-43-654897-2
+duree=82.0
+cineaste=Dennis Dugan
+
+titre=Les Minions
+date=2015-07-10
+nbrCopies=5
+coteDewey=790.867
+valeur=19.99
+sujet=Animation-Comédie
+isbn=978-4-12-876952-5
+duree=91.0
+cineaste=Kyle Balda
+
+titre=Living Things
+date=2012-06-26
+nbrCopies=3
+coteDewey=780.595
+valeur=14.99
+sujet=Alternative rock
+isbn=978-4-65-642322-7
+duree=36.99
+auteur=Chester Bennington et Mike Shinoda
+groupe=Linkin Park
+nbrPiste=12
+
+titre=Moon landing
+date=2013-10-18
+nbrCopies=10
+coteDewey=780.444
+valeur=18.99
+sujet=Soft rock
+isbn=978-4-56-876956-3
+duree=43.25
+auteur=James Blunt
+groupe=James Blunt
+nbrPiste=11
+
+titre=Nous autres
+date=2015-04-14
+nbrCopies=2
+coteDewey=780.784
+valeur=14.99
+sujet=Pop
+isbn=978-4-66-435627-7
+duree=43.8
+auteur=Erik et Sonny Caouette
+groupe=2 Freres
+nbrPiste=12
+
+titre=Star Wars, épisode VI : Le Retour du Jedi
+date=1983-05-25
+nbrCopies=3
+coteDewey=520.56
+valeur=129.99
+sujet=Science-Fiction
+isbn=978-3-11-587412-8
+duree=135.0
+cineaste=George Lucas

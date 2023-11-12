@@ -1,0 +1,15 @@
+package pkEnch2;
+
+import javax.swing.JOptionPane;
+import java.text.NumberFormat;
+
+public class Ench2No3 
+{
+
+	public static void main(String[] args) 
+	{
+		
+
+	}
+
+}

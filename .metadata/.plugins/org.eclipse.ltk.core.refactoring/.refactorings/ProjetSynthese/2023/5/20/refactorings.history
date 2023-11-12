@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Supprimer 4 éléments de projet &apos;ProjetSynthese&apos;&#x0D;&#x0A;- Projet d&apos;origine : &apos;ProjetSynthese&apos;&#x0D;&#x0A;- Eléments d&apos;origine :&#x0D;&#x0A;JavaRefactoringDescriptorComment_textual_move_only=Déplacement textuel uniquementBiblio.ser&#x0D;&#x0A;JavaRefactoringDescriptorComment_textual_move_only=Déplacement textuel uniquementmultimedia.txt&#x0D;&#x0A;JavaRefactoringDescriptorComment_textual_move_only=Déplacement textuel uniquementperiode.txt&#x0D;&#x0A;JavaRefactoringDescriptorComment_textual_move_only=Déplacement textuel uniquementvolume.txt" description="Supprimer les éléments" element1="periode.txt" element2="Biblio.ser" element3="multimedia.txt" element4="volume.txt" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="4" stamp="1684154438123" subPackages="false" version="1.0"/>
+</session>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copier l’élément « Etudiant.java » dans « ZCours0206/src/pkClasse »&#x0D;&#x0A;- Projet d&apos;origine : &apos;ZCours0206&apos;&#x0D;&#x0A;- Elément de destination : &apos;ZCours0206/src/pkClasse&apos;&#x0D;&#x0A;- Elément d&apos;origine : &apos;pkClasse.Etudiant.java&apos;" description="Copier l&apos;unité de compilation" destination="/src&lt;pkClasse" element1="/src&lt;pkClasse{Etudiant.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1675804065171" units="1" version="1.0"/>
+</session>

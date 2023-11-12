@@ -1,0 +1,42 @@
+/***********************************************************************
+
+Le fichier:			ErreurBiblio.java
+
+Projet:				ProjetSynthese
+
+Objectifs:			Créer des messages d'erreur personalisé
+
+Logiciel: 			Éclipse 4.16.0
+
+Plateforme:			Windows
+
+Auteur:				Nicolas Fleurent
+
+Date de création:	2023-04-17
+
+***********************************************************************/
+
+package pkClasses;
+
+public class ErreurBiblio extends Exception {
+	
+	private String typeErreur;
+	
+	public ErreurBiblio() {
+		typeErreur = null;
+	}
+	
+	public ErreurBiblio(String _typeErreur) {
+		typeErreur = _typeErreur;
+	}
+	
+	public String message() {
+		if(typeErreur == "coteDewey")	
+			return "La cote n'est pas valide, elle doit se situer entre 1 et 999 inclusivement.";
+		else if(typeErreur == "negatif")
+			return "Ce nombre ne peut pas être négatif, la valeur est alors défini à 0.";
+		else
+			return "L'opération n'est pas valide";
+	}
+
+}

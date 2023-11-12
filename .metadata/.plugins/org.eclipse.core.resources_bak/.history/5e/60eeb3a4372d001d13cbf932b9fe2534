@@ -1,0 +1,39 @@
+package pkEnch2;
+
+import javax.swing.JOptionPane;
+import java.text.NumberFormat;
+
+public class EnchNo8 
+{
+
+	public static void main(String[] args) 
+	{
+		String	strNom;						//Nom de l'élève
+		String	strNote;					//Note de l'élève
+		String	strNoteMax;					//La note maximal possible à l'examen
+		
+		double dNote;						//Conversion de la note de l'élève
+		double dNoteMax;					//Conversion de la note maximal possible à l'examen
+		double dNotePourcent;				//Calcul de la note sur 100
+		
+		NumberFormat pourcentage = NumberFormat.getPercentInstance();
+		
+		strNom 		= JOptionPane.showInputDialog("Entrez le nom de l'élève.");
+		strNote 	= JOptionPane.showInputDialog("Entrez le résultat de l'élève.");
+		strNoteMax	= JOptionPane.showInputDialog("Entrez le résultat maximal possible à l'examen.");
+		dNote		= Double.parseDouble(strNote);
+		dNoteMax	= Double.parseDouble(strNoteMax);
+		
+		dNotePourcent = dNote / dNoteMax;
+		
+		String strResultat = " ";
+		strResultat += "\n" + strNom + " a eu " + strNote + " points sur un examen de " + strNoteMax + " points.";
+		strResultat += "\n" + strNom + " obtien donc " + pourcentage.format(dNotePourcent) + " pour son examen.";
+		
+		JOptionPane.showMessageDialog(null, strResultat, "Résultat sur 100", JOptionPane.PLAIN_MESSAGE);
+		
+		System.exit(0);
+
+	}
+
+}

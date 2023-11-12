@@ -1,0 +1,19 @@
+package Test;
+
+import pkClasse.*;
+
+public class Test {
+
+	public static void main(String[] args) {
+		
+		
+		Syndra syndra = new Syndra(1, 1);
+		
+		System.out.println(syndra.attaque("Magique"));
+		
+		System.out.println(syndra.test());
+	}
+
+}
+
+

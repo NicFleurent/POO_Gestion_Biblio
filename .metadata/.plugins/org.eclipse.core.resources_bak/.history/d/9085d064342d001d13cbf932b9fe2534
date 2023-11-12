@@ -1,0 +1,29 @@
+package pkEnch2;
+
+import javax.swing.JOptionPane;
+import java.text.NumberFormat;
+
+public class Ench2No7 
+{
+
+	public static void main(String[] args) 
+	{
+		String strNote;					//Saisie de la note sur 40
+		
+		double dNote;					//Conversion de la note sur 40
+		
+		//NumberFormat pourcentage = NumberFormat.getPercentInstance("/100");
+		NumberFormat pourcentage = NumberFormat.getInstance("/100");
+		
+		strNote 	= JOptionPane.showInputDialog("Entrez la note sur 40.");
+		dNote 		= Double.parseDouble(strNote);
+		
+		dNote /= 40;
+		
+		JOptionPane.showMessageDialog(null, "La note est: " + pourcentage.format(dNote));
+		
+		System.exit(0);
+
+	}
+
+}

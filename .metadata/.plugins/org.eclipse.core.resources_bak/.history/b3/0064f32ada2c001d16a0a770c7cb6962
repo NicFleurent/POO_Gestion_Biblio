@@ -1,0 +1,19 @@
+package pkEnch2;
+
+import javax.swing.JOptionPane;
+
+public class Ench2No6 
+{
+
+	public static void main(String[] args) 
+	{
+		String strNbrHeure;						//Nombre d'heure
+		String strNbrCir;						//Nombre de circulaires distribués
+		
+		double dNbrHeure;						//Conversion nombre d'heure
+		double dNbrCir;							//Conversion nombre de circulaires distribués
+		
+
+	}
+
+}

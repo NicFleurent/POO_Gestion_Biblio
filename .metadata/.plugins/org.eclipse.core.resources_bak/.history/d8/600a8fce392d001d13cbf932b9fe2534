@@ -1,0 +1,30 @@
+package pkEnch2;
+
+import javax.swing.JOptionPane;
+
+public class Ench2No9 
+{
+
+	public static void main(String[] args) 
+	{
+		String	strSec;					//Nombre de seconde
+		
+		double	dSec;					//Conversion nombre de seconde
+		
+		double	dMin;					//Nombre de minute
+		double	dHeure;					//Nombre d'heure
+		
+		strSec 	= JOptionPane.showInputDialog("Entrez le nombre de seconde.");
+		dSec 	= Double.parseDouble(strSec);
+		
+		dHeure 	= Math.floor(dSec / 360);
+		dMin 	= Math.floor((dSec % 360) / 60);
+		dSec	%= 60;
+		
+		JOptionPane.showMessageDialog(null, "Cela équivaut à " + dHeure + " heures, " + dMin + " minutes et " + dSec + "secondes.");
+		
+		System.exit(0);
+
+	}
+
+}

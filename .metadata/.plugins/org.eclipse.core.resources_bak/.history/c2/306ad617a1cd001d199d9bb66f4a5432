@@ -1,0 +1,93 @@
+package pkClasse;
+
+import java.util.GregorianCalendar;
+
+public class Tache {
+	
+	protected 	String 				nom;
+	protected 	GregorianCalendar 	debut;
+	protected 	GregorianCalendar 	fin;
+	protected 	int					duree;
+	protected 	double				cout;
+	protected	String				commentaire;
+	
+	public Tache() {
+		this.nom = "n/d";
+		this.debut = new GregorianCalendar();
+		this.fin = new GregorianCalendar();
+		this.duree = 0;
+		this.cout = 0;
+		this.commentaire = "aucun";
+	}
+	
+	public Tache(String nom, GregorianCalendar debut, GregorianCalendar fin, int duree, double cout,
+			String commentaire) {
+		this.nom = nom;
+		this.debut = debut;
+		this.fin = fin;
+		setDuree(duree);
+		setCout(cout);
+		this.commentaire = commentaire;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public GregorianCalendar getDebut() {
+		return debut;
+	}
+
+	public void setDebut(GregorianCalendar debut) {
+		this.debut = debut;
+	}
+
+	public GregorianCalendar getFin() {
+		return fin;
+	}
+
+	public void setFin(GregorianCalendar fin) {
+		this.fin = fin;
+	}
+
+	public int getDuree() {
+		return duree;
+	}
+
+	public void setDuree(int _duree) {
+		if(_duree >= 0)
+		{
+			duree = _duree;
+		}
+		else
+			duree = 0;
+	}
+
+	public double getCout() {
+		return cout;
+	}
+
+	public void setCout(double _cout) {
+		if(_cout >= 0)
+		{
+			cout = _cout;
+		}
+		else
+			cout = 0;
+	}
+
+	public String getCommentaire() {
+		return commentaire;
+	}
+
+	public void setCommentaire(String commentaire) {
+		this.commentaire = commentaire;
+	}
+	
+	
+
+}

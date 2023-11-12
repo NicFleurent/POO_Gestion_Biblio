@@ -1,0 +1,28 @@
+package pkEnch2;
+
+import javax.swing.JOptionPane;
+
+public class Ench2No5 
+{
+
+	public static void main(String[] args) 
+	{
+		String strPrixHab;					//Prix de l'habit
+		
+		double dPrixHab;					//Conversion prix de l'habit
+		double dEsc 			= -0.15;	//Escompte
+		double dSousTotal;					//Sous-total
+		double dTauxTps 		= 0.075;	//Taxes fédérales
+		double dCoutTps;					//Coût avec les taxes fédérales
+		double dTauxTvq 		= 0.07;		//Taxes fédérales
+		double dCoutTotalFinal;				//Coût total
+		
+		strPrixHab 	= JOptionPane.showInputDialog("Entrez le prix de l'habit.");
+		dPrixHab 	= Double.parseDouble(strPrixHab);
+		
+		dEsc *= dPrixHab;
+		
+
+	}
+
+}

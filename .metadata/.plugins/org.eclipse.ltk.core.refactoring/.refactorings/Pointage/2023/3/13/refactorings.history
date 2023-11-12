@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Déplacer l’élément « TestTache.java » dans « Laboratoire7_Tache/src/pkTest »&#x0D;&#x0A;- Projet d&apos;origine : &apos;Pointage&apos;&#x0D;&#x0A;- Elément de destination : &apos;Laboratoire7_Tache/src/pkTest&apos;&#x0D;&#x0A;- Elément d&apos;origine : &apos;TestTache.java&apos;&#x0D;&#x0A;- Mettre à jour les références d&apos;un élément restructuré" description="Déplacer le fichier" destination="=Laboratoire7_Tache/src&lt;pkTest" element1="TestTache.java" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1680266919049" units="0" version="1.0"/>
+</session>

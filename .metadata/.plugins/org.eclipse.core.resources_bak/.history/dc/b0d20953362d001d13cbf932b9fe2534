@@ -1,0 +1,24 @@
+package pkEnch2;
+
+import javax.swing.JOptionPane;
+import java.text.NumberFormat;
+
+public class EnchNo8 
+{
+
+	public static void main(String[] args) 
+	{
+		String	strNom;						//Nom de l'élève
+		String	strNote;					//Note de l'élève
+		String	strNoteMax;					//La note maximal possible à l'examen
+		
+		double dNote;						//Conversion de la note de l'élève
+		double dNoteMax;					//Conversion de la note maximal possible à l'examen
+		
+		strNom 		= JOptionPane.showInputDialog("Entrez le nom de l'élève.");
+		strNote 	= JOptionPane.showInputDialog("Entrez le résultat de l'élève.");
+		strNoteMax	= JOptionPane.showInputDialog("Entrez le résultat de l'élève.");
+
+	}
+
+}

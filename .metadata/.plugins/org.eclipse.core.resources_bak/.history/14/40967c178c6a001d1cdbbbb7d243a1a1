@@ -1,0 +1,52 @@
+package pkTab2DSup;
+
+import javax.swing.*;
+
+public class Tab2DSupNo1 
+{
+
+	public static void main(String[] args) 
+	{
+		String	strNote;																					//Affichage des notes
+		String	strMoy;																						//Affichage des moyennes
+		
+		int		iNote[][]	= {	{77, 68, 86, 73},
+								{96, 87, 89, 81},
+								{70, 90, 86, 81}};															//Matrice des notes
+		int		iNoteMin	= Integer.MAX_VALUE;															//Note minimale
+		int		iNoteMax	= 0;																			//Note maximale
+		int		iEtudiant	= 0;																			//Nombre d'Ètudiant
+		int		iMoy		= 0;																			//Moyenne
+		
+		strNote = "\t\t…tudiant 1\t…tudiant 2\t…tudiant 3\t…tudiant 4";
+		
+		for (int iLigne = 0 ; iLigne < iNote.length ; iLigne++)
+		{
+			switch (iLigne)
+			{
+			case 0: strNote += "\nNotes examen intra"; break;
+			case 1: strNote += "\nNotes examen final"; break;
+			case 2: strNote += "\nNotes examen synthËse"; break;
+			}
+			
+			for(int iCol = 0 ; iCol < iNote[iLigne].length ; iCol++)
+			{
+				strNote += "\t" + iNote[iLigne][iCol];
+				
+				if(iNote[iLigne][iCol] < iNoteMin)
+					iNoteMin = iNote[iLigne][iCol];
+				
+				if(iNote[iLigne][iCol] > iNoteMax)
+					iNoteMax = iNote[iLigne][iCol];
+			}
+			
+			iEtudiant++;
+		}
+		
+		
+		
+		JOptionPane.showMessageDialog(null, new JTextArea(strNote));
+
+	}
+
+}

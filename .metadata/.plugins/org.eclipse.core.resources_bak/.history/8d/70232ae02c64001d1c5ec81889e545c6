@@ -1,0 +1,91 @@
+package ProjetPersonnel;
+
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+
+/***********************************************************************
+
+Le fichier:			CalculBowling.java
+
+Projet:				Projet Personnel
+
+Objectifs:			Compile les scores de bowling
+
+Logiciel: 			Éclipse 4.16.0
+
+Plateforme:			Windows
+
+Auteur:				Nicolas Fleurent
+
+Date de création:	2022-11-14
+
+***********************************************************************/
+
+public class CalculBowling 
+{
+
+	public static void main(String[] args) 
+	{
+		final	int		MAX_CAR			= 10;
+		final	int		TOT_QUILLE		= 10;
+		
+				String	strChoixMenu[]	= {	"Jouer une partie",
+											"Visualiser les statistiques",
+											"Quitter l'application"};
+				String	strAffichage	= "";
+				
+				int		iChoixMenu		= 0;
+				
+				int		iScore[]		= new int[MAX_CAR];
+
+		do {
+			iChoixMenu = JOptionPane.showOptionDialog(	null, 
+														"Sélectionnez votre choix parmi les options suivantes: ",
+														"Menu principal",   			  
+												        JOptionPane.YES_NO_OPTION, 
+														JOptionPane.PLAIN_MESSAGE, 
+														null,
+														strChoixMenu,
+														strChoixMenu[0]);
+			
+			switch (iChoixMenu)
+			{
+			case 1:
+				strAffichage = "1\t2\t3\t4\t5\t6\t7\t8\t9\t10\n";
+				for(int iCtr = 0 ; iCtr < (MAX_CAR - 1) ; iCtr++)
+				{
+					iScore[iCtr] = Integer.parseInt(JOptionPane.showInputDialog(null, "1er lancer du carreau #" + (iCtr +1), "Entrer votre score"));
+					
+					if(iScore[iCtr] != TOT_QUILLE)
+					{
+						iScore[iCtr] += Integer.parseInt(JOptionPane.showInputDialog(null, "2e lancer du carreau #" + (iCtr +1), "Entrer votre score"));
+						
+						if (iScore[iCtr] == TOT_QUILLE)
+							strAffichage += "R\t";
+						else
+							strAffichage += iScore[iCtr] + "\t";
+					}
+					else
+						strAffichage += "A\t";
+					
+				}
+				break;
+			case 2:
+				JOptionPane.showMessageDialog(null, new JTextArea(strAffichage));
+				break;
+			}
+
+			
+		} while (iChoixMenu != 2);
+		
+		/***********************************************************************
+		Message de fin.
+		***********************************************************************/
+		JOptionPane.showMessageDialog(null, "L'application va terminé, bonne journée.");
+		
+		System.exit(0);
+		
+		
+	}
+
+}

@@ -1,0 +1,32 @@
+package pkTest;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
+import javax.swing.*;
+
+public class Test extends JFrame {
+
+	public static void main(String[] args) {
+		
+		JFrame frame = new JFrame("Bibliothèque");
+		
+		JButton button = new JButton("Test bouton");
+		
+		JLabel label = new JLabel("panel label");
+		
+		JPanel panel = new JPanel();
+		
+		frame.setBackground(Color.red);
+		
+		button.setBounds(150, 200, 220, 50);
+		
+		frame.add(panel);
+		frame.add(button);
+		
+		frame.setSize(500, 500);
+		frame.setLayout(null);
+		frame.setVisible(true);
+
+	}
+
+}

@@ -1,0 +1,43 @@
+package pkEnch2;
+
+import javax.swing.JOptionPane;
+import java.text.NumberFormat;
+
+public class Ench2No6 
+{
+
+	public static void main(String[] args) 
+	{
+		String strNbrHeure;						//Nombre d'heure
+		String strNbrCir;						//Nombre de circulaires distribués
+		
+		double dNbrHeure;						//Conversion nombre d'heure
+		double dNbrCir;							//Conversion nombre de circulaires distribuées
+		
+		double dSalHeure 	= 8;				//Salaire en lien avec les heures
+		double dSalCir 		= 4;				//Salaire en lien avec le nombres de circulaires
+		double dSalTotal;						//Salaire Total
+		
+		NumberFormat signedollars = NumberFormat.getCurrencyInstance();
+		
+		strNbrHeure 	= JOptionPane.showInputDialog("Entrez le nombre d'heures.");
+		strNbrCir 		= JOptionPane.showInputDialog("Entrez le nombre de circulaires distribuées.");
+		dNbrHeure		= Double.parseDouble(strNbrHeure);
+		dNbrCir			= Double.parseDouble(strNbrCir);
+		
+		dSalHeure		*= dNbrHeure;
+		dSalCir			*= Math.floor(dNbrCir/100);
+		dSalTotal		= dSalHeure + dSalCir;
+		
+		String strPaye = " ";
+		strPaye += "\nLe salaire sur les heures est de: " + signedollars.format(dSalHeure);
+		strPaye += "\nLe salaire sur les circulaires est de: " + signedollars.format(dSalCir);
+		strPaye += "\nLe salaire total est de: " + signedollars.format(dSalTotal);
+		
+		JOptionPane.showMessageDialog(null, strPaye, "Détails de la paye", JOptionPane.PLAIN_MESSAGE);
+		
+		System.exit(0);
+
+	}
+
+}

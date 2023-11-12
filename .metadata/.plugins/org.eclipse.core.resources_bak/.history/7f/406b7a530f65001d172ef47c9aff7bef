@@ -1,0 +1,72 @@
+package ProjetPersonnel;
+
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+
+/***********************************************************************
+
+Le fichier:			CalculBowling.java
+
+Projet:				Projet Personnel
+
+Objectifs:			Compile les scores de bowling
+
+Logiciel: 			Éclipse 4.16.0
+
+Plateforme:			Windows
+
+Auteur:				Nicolas Fleurent
+
+Date de création:	2022-11-15
+
+***********************************************************************/
+
+public class Bowling 
+{
+
+	public static void main(String[] args) 
+	{
+		final	int		MAX_LANCER		= 21;																		//Maximum de lancer dans une partie
+		final	int		MAX_CAR			= 10;																		//Maximum de lancer dans une partie
+		
+				String	strChoixMenu[]	= {	"Jouer une partie",
+											"Visualiser les statistiques",
+											"Quitter l'application"};												//Menu
+		
+
+				int		iChoixMenu		= 0;																		//Choix dans le menu
+				int		iLancer[]		= new int[MAX_LANCER];														//Emplacement mémoire pour chaque lancer
+				int		iCarreau[]		= new int[MAX_CAR];															//Emplacement mémoire pour le total du chaque carreau
+				int		iScore[]		= new int[MAX_CAR];															//Emplacement mémoire pour le score total à chaque carreau
+
+				char	cLancer[]		= new char[MAX_LANCER];														//Emplacement mémoire pour chaque lancer
+				
+		do {
+			iChoixMenu = JOptionPane.showOptionDialog(	null, 
+					"Sélectionnez votre choix parmi les options suivantes: ",
+					"Menu principal",   			  
+			        JOptionPane.YES_NO_OPTION, 
+					JOptionPane.PLAIN_MESSAGE, 
+					null,
+					strChoixMenu,
+					strChoixMenu[0]);
+
+			switch (iChoixMenu)
+			{
+			case 0:
+				for(int iCtr = 0 ; iCtr < MAX_CAR ; iCtr++)
+				{
+					iLancer[iCtr * 2] = Integer.parseInt(JOptionPane.showInputDialog(null, "1er lancer du carreau #" + (iCtr + 1), "Entrer le nombre de quilles tombées"));
+					
+					if (iLancer[iCtr * 2] == 10)
+						cLancer[iCtr * 2] = 'a';
+					else
+						iLancer[(iCtr * 2) + 1] = Integer.parseInt(JOptionPane.showInputDialog(null, "2e lancer du carreau #" + (iCtr + 1), "Entrer le nombre de quilles tombées"));
+				}
+				break;
+			}
+		} while (iChoixMenu != 2);
+
+	}
+
+}

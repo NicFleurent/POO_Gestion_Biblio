@@ -1,0 +1,11 @@
+package pkClasses;
+
+import java.util.ArrayList;
+
+public class BDItem {
+	
+	protected ArrayList<Item> listeItems;
+	
+	public BDItem
+
+}

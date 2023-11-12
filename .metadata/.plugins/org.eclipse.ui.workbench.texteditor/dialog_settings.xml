@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="selection" value="erreurDate"/>
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<list key="findhistory">
+			<item value="erreurDate"/>
+			<item value="Suppress"/>
+			<item value="pnlAfficher"/>
+			<item value="pnlAfficherConsole"/>
+			<item value="afficherConsole"/>
+			<item value="test"/>
+			<item value="panel"/>
+			<item value="numPeriode"/>
+			<item value="coteDewey"/>
+			<item value="faceCarte = "/>
+			<item value="MONTH"/>
+			<item value="compareTo"/>
+			<item value="int"/>
+			<item value="AD"/>
+			<item value="AP"/>
+		</list>
+		<list key="replacehistory">
+			<item value="pnlAfficherItem"/>
+			<item value="pnlAfficherConsole"/>
+			<item value="afficher"/>
+			<item value="pnlAfficher"/>
+			<item value="afficherConsole"/>
+			<item value="accueil"/>
+			<item value="menu"/>
+			<item value="return "/>
+			<item value="double"/>
+			<item value="ad"/>
+			<item value="ap"/>
+			<item value="montant"/>
+			<item value="eA"/>
+			<item value="anneeParrution"/>
+			<item value="POND_NON_100"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="1411"/>
+		<item key="DIALOG_Y_ORIGIN" value="210"/>
+		<item key="DIALOG_WIDTH" value="458"/>
+		<item key="DIALOG_HEIGHT" value="391"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+</section>

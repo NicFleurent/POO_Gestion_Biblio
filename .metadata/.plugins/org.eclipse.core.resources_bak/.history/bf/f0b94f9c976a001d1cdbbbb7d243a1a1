@@ -1,0 +1,65 @@
+package pkTab2DSup;
+
+import javax.swing.*;
+
+public class Tab2DSupNo2 
+{
+
+	public static void main(String[] args) 
+	{
+		final	int		ETU				= 5;																			//Nombre maximal d'étudiant
+		final	int		QUESTION		= 15;																			//nombre maximal de question
+		final	int		VAL_A			= 1;																			//Valeur de a
+		final	int		VAL_B			= 3;																			//Valeur de b
+		final	int		VAL_C			= 4;																			//Valeur de c
+		final	int		VAL_D			= 0;																			//Valeur de d
+		final	int		VAL_E			= 2;																			//Valeur de e
+		
+				String	strQuestion;
+				
+				char	cQuestion[][]	= new char[ETU][QUESTION];														//Questionnaire
+				
+				int		iEtu;																							//Étudiant érépondant au questionnaire
+				int		iQuestion;																						//Question à laquelle il répond
+				int		iCat;																							//Catégorie de l'étudiant
+				
+		for (iEtu = 0 ; iEtu < ETU ; iEtu++)
+		{
+			iCat = 0;
+			
+			for (iQuestion = 0 ; iQuestion < QUESTION ; iQuestion++)
+			{
+				
+				
+				do {
+					strQuestion = JOptionPane.showInputDialog("Répondre par a, b, c, d ou e à la question " + (iQuestion + 1));
+					cQuestion[iEtu][iQuestion]	= strQuestion.charAt(0);
+					
+					switch (cQuestion[iEtu][iQuestion])
+					{
+					case 'A': case 'a':
+										iCat += VAL_A;
+										break;
+					case 'B': case 'b':
+										iCat += VAL_B;
+										break;
+					case 'C': case 'c':
+										iCat += VAL_C;
+										break;
+					case 'D': case 'd':
+										iCat += VAL_D;
+										break;
+					case 'E': case 'e':
+										iCat += VAL_E;
+										break;
+					default: cQuestion[iEtu][iQuestion] = 'z';
+					}
+					
+				} while (cQuestion[iEtu][iQuestion] == 'z');
+				
+			}
+		}
+
+	}
+
+}

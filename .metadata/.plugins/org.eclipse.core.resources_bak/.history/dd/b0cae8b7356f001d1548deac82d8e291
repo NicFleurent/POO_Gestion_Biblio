@@ -1,0 +1,376 @@
+package pkTab;
+
+import java.text.DecimalFormat;
+import java.util.Arrays;
+
+import javax.swing.*;
+
+/***********************************************************************
+
+Le fichier:			TabNo5.java
+
+Projet:				Laboratoire sur les tableaux
+
+Objectifs:			Comptabiliser les notes des étudiants
+
+Logiciel: 			Éclipse 4.16.0
+
+Plateforme:			Windows
+
+Auteur:				Nicolas Fleurent
+
+Date de création:	2022-11-03
+
+***********************************************************************/
+
+public class TabNo5 
+{
+
+	public static void main(String[] args) 
+	{
+		final	int		INACTIF				= 999;																								//Constante pour remettre les données à 0.
+		final	int		VIDE				= 0;																								//Constante pour remettre une variable à zéro.
+		
+				String	strTabNom[]			= {	"Alice",
+												"Benoit",
+												"Claude",
+												"Diane",
+												"Emile"};																						//Tableau des noms.
+				
+				String	strTabAdresse[]		= {	"180 St-George",
+												"456 Bellevue",
+												"789 Cloutier",
+												"928 Duclos",
+												"894 Emilien"};																					//Tableau des adresses.
+				
+				String	strMenu[]			= {	"1. Ajouter un étudiant.",
+												"2. Modifier une information.",
+												"3. Supprimer un étudiant.",
+												"4. Visualiser les informations d'un étudiant.",
+												"5. Visualiser le nom de tous les étudiants.",
+												"6. Visualiser la note la plus basse du cours de Logique de programmation.",
+												"7. Visualiser la note la plus haute du cours de Logique de programmation.",
+												"8. Visualiser la moyenne du cours Programation structurée.",
+												"9. Visualiser la moyenne des deux cours ensemble.",
+												"Quitter l'application."};																		//Menu principal
+				String	strChoixMenu		= "";																								//Choix dans le menu principal.
+				
+				String	strMenuMod[]		= {	"1. Modifier l'adresse.",
+												"2. Modifier la note en Logique de la programmation.",
+												"3. Modifier la note en Programmation structurée."};											//Menu de modification
+				String	strChoixMenuMod		= "";																								//Choix dans le menu de modification.
+				
+				String	strAffichage;																											//Affichage des étudiants.
+		
+				char	cChoixMenu, cChoixMenuMod;																								//Conversion du choix.
+				
+				int		iTabMat[]			= {123, 456, 789, 928, 999};																		//Tableau des matricules.
+				int		iPosition;																												//Position dans le tableau.
+				int		iCtr;																													//Compteur pour les boucles.
+				int		iMat;																													//Matricule de l'élève à modifier / supprimer.
+				int		iVerif;																													//Vérification avant la suppression.
+				int		iNoteValide;																											//Compteur de note valide
+
+				double	dTabLog[]			= {88, 65, 95, 79, 89};																				//Tableau des notes en logique.
+				double	dNoteLogMin			= Double.MAX_VALUE;																					//Plus basse note.
+				double	dNoteLogMax			= VIDE;																								//Plus haute note.
+				double	dTabProg[]			= {86, 60, 90, 78, 89};																				//Tableau des notes en programmation.
+				double	dMoyProg			= VIDE;																								//Moyenne du cours de programmation.
+				double	dMoyTot				= VIDE;																								//Moyenne de l'ensemble des cours.
+		
+				boolean	bErreurAjout;																											//Valide si le tableau est plein.
+				boolean	bErreurMod;																											//Valide si le matricule est bon.
+				
+		DecimalFormat	zerochiffre			= new DecimalFormat("0");
+		
+		/***********************************************************************
+		Message de bienvenue.
+		***********************************************************************/
+		JOptionPane.showMessageDialog(null, "Bienvenue, cette application permet de visualiser les informations des élèves.");
+		
+		/***********************************************************************
+		Boucle qui retourne au menu principal.
+		***********************************************************************/
+		do {
+			
+			/***********************************************************************
+			Créer la liste des étudiants pour les différentes options.
+			***********************************************************************/
+			strAffichage = "Voici la liste des étudiants:\n";
+			strAffichage += "Matricule\t" + "Nom\t" + "Adresse\t" + "Note Logique\t" + "Note Programmation";
+			
+			for (iCtr = 0 ; iCtr < iTabMat.length ; iCtr++)
+				if(iTabMat[iCtr] != INACTIF)
+					{
+						strAffichage +=  "\n" + iTabMat[iCtr];
+						strAffichage +=  "\t" + strTabNom[iCtr];
+						strAffichage +=  "\t" + strTabAdresse[iCtr];
+						strAffichage +=  "\t" + zerochiffre.format(dTabLog[iCtr]);
+						strAffichage +=  "\t" + zerochiffre.format(dTabProg[iCtr]);
+					}
+			
+			strChoixMenu = (String) JOptionPane.showInputDialog(null,
+																"Sélectionnz votre choix parmi les options suivantes:", 
+																"Menu Principal",
+																JOptionPane.QUESTION_MESSAGE, 
+																null, 
+																strMenu, 
+																strMenu[0]);
+			
+			cChoixMenu = strChoixMenu.charAt(0);
+			
+			switch (cChoixMenu)
+			{
+			case '1':
+				bErreurAjout = true;
+				
+				/***********************************************************************
+				Remplis l'emplacement si inactif
+				***********************************************************************/
+				for (iCtr = 0 ; iCtr < iTabMat.length ; iCtr++)
+				{
+					if (iTabMat[iCtr] == INACTIF)
+					{
+						iTabMat[iCtr] 		= Integer.parseInt(JOptionPane.showInputDialog(null, "Veuillez saisir le numéro de matricule de l'étudiant(e)", "XXX"));
+						
+						if (iTabMat[iCtr] != INACTIF)
+						{
+							strTabNom[iCtr]		= JOptionPane.showInputDialog("Veuillez saisir le nom de l'étudiant(e)");
+							strTabAdresse[iCtr]	= JOptionPane.showInputDialog("Veuillez saisir l'adresse de l'étudiant(e)");
+							dTabLog[iCtr]		= Double.parseDouble(JOptionPane.showInputDialog("Veuillez saisir la note de l'étudiant(e) en Logique de programmation."));
+							dTabProg[iCtr]		= Double.parseDouble(JOptionPane.showInputDialog("Veuillez saisir la note de l'étudiant(e) en Programmation structurée."));
+						}
+						else
+							JOptionPane.showMessageDialog(null, "Vous ne pouvez pas ajouter un élève inactif.");
+						
+						bErreurAjout = false;
+						break;
+					}
+				}
+				if (bErreurAjout)
+					JOptionPane.showMessageDialog(null, "Tableau plein, vous ne pouvez pas ajouter d'élève.");
+				break;
+			
+			case '2':
+				iMat = Integer.parseInt(JOptionPane.showInputDialog(null, new JTextArea(strAffichage), "Entrer le matricule de l'étudiant à modifier."));
+				
+				if (iMat != INACTIF)
+				{
+					bErreurMod = true;
+					
+					/***********************************************************************
+					Cherche l'emplacement dans le tableau et la modifie.
+					***********************************************************************/
+					for (iCtr = 0 ; iCtr < iTabMat.length ; iCtr++)
+					{
+						if (iTabMat[iCtr] == iMat)
+						{
+							
+							/***********************************************************************
+							Sous-menu
+							***********************************************************************/
+							strChoixMenuMod = (String) JOptionPane.showInputDialog(null,
+																				"Sélectionnz votre choix parmi les options suivantes:", 
+																				"Menu de modification",
+																				JOptionPane.QUESTION_MESSAGE, 
+																				null, 
+																				strMenuMod, 
+																				strMenuMod[0]);
+							
+							cChoixMenuMod = strChoixMenuMod.charAt(0);
+							
+							switch(cChoixMenuMod)
+							{
+							case '1':
+								strTabAdresse[iCtr] = JOptionPane.showInputDialog("Entrez l'adresse de l'élève.");
+								break;
+								
+							case '2':
+								dTabLog[iCtr] = Double.parseDouble(JOptionPane.showInputDialog("Veuillez saisir la nouvelle note de l'étudiant(e) en Logique de programmation."));
+								break;
+								
+							case '3':
+								dTabProg[iCtr] = Double.parseDouble(JOptionPane.showInputDialog("Veuillez saisir la nouvelle note de l'étudiant(e) en Programmation structurée."));
+								break;
+							}
+							
+							bErreurMod = false;
+
+						}
+					}
+					
+					if (bErreurMod)
+						JOptionPane.showMessageDialog(null, "Ce matricule n'existe pas.");
+				}
+				else
+					JOptionPane.showMessageDialog(null, "Vous ne pouvez pas modifier les informations d'un élève déjà inactif.");
+				break;
+				
+			case '3':
+				iMat	= Integer.parseInt(JOptionPane.showInputDialog(null, new JTextArea(strAffichage), "Entrer le matricule de l'étudiant à supprimer."));
+				
+				if (iMat != INACTIF)
+				{
+					/***********************************************************************
+					Cherche l'emplacement dans le tableau et la supprime.
+					***********************************************************************/
+					Arrays.sort(iTabMat);
+					iPosition = Arrays.binarySearch(iTabMat, iMat);
+					if (iPosition >= 0)
+					{
+						iVerif = JOptionPane.showConfirmDialog(	null, 
+								"Désirez-vous vraiment supprimer l'élève " + iTabMat[iPosition] + " " + strTabNom[iPosition], 
+								"Suppression d'un élève", 
+								JOptionPane.YES_NO_OPTION);
+						if (iVerif == 0)
+						{
+							iTabMat[iPosition] 			= INACTIF;
+						}
+					}
+					else
+						JOptionPane.showMessageDialog(null, "L'élève que vous tentez de supprimer n'existe pas.");
+					
+				}
+				else
+					JOptionPane.showMessageDialog(null, "Vous ne pouvez pas supprimer un élève déjà inactif.");
+				break;
+				
+			case '4':
+				iMat	= Integer.parseInt(JOptionPane.showInputDialog("Entrer le matricule de l'étudiant que vous souhaitez visualiser."));
+				
+				if (iMat != INACTIF)
+				{
+					/***********************************************************************
+					Cherche l'emplacement dans le tableau et affiche l'élève.
+					***********************************************************************/
+					Arrays.sort(iTabMat);
+					iPosition = Arrays.binarySearch(iTabMat, iMat);
+					if (iPosition >= 0)
+					{
+						strAffichage = "Matricule\t" + "Nom\t" + "Adresse\t" + "Note Logique\t" + "NoteProgrammation\n";
+						strAffichage += iTabMat[iPosition] + "\t";
+						strAffichage += strTabNom[iPosition] + "\t";
+						strAffichage += strTabAdresse[iPosition] + "\t";
+						strAffichage += zerochiffre.format(dTabLog[iPosition]) + "\t";
+						strAffichage += zerochiffre.format(dTabProg[iPosition]);
+					
+						JOptionPane.showMessageDialog(null, new JTextArea(strAffichage));
+					}
+					else
+						JOptionPane.showMessageDialog(null, "L'élève que vous tentez de visualiser n'existe pas.");
+				}
+				else
+					JOptionPane.showMessageDialog(null, "Vous ne pouvez pas supprimer un élève déjà inactif.");
+				break;
+			
+			case '5':
+				strAffichage = "Voici les noms des élèves:";
+				
+				/***********************************************************************
+				Ajoute tous les noms à l'affichage.
+				***********************************************************************/
+				for (iCtr = 0 ; iCtr < strTabNom.length ; iCtr++)
+					if(iTabMat[iCtr] != INACTIF)
+						strAffichage +=  "\n" + strTabNom[iCtr];
+				
+				JOptionPane.showMessageDialog(null, new JTextArea(strAffichage));
+				break;
+				
+			case '6':
+
+				/***********************************************************************
+				Cherche le pire étudiant et le met dans l'affichage.
+				***********************************************************************/
+				for (iCtr = 0 ; iCtr < dTabLog.length ; iCtr++)
+				{
+					if (iTabMat[iCtr] != INACTIF)
+						if (dTabLog[iCtr] < dNoteLogMin)
+						{
+							dNoteLogMin		= dTabLog[iCtr];
+							strAffichage 	= "\nL'étudiant " + iTabMat[iCtr] + " " + strTabNom[iCtr] + " à la note la plus basse avec " + zerochiffre.format(dTabLog[iCtr]) + "%";
+						}
+							
+				}
+				
+				JOptionPane.showMessageDialog(null, strAffichage);
+				break;
+				
+			case '7':
+
+				/***********************************************************************
+				Cherche le meilleur étudiant et le met dans l'affichage.
+				***********************************************************************/
+				for (iCtr = 0 ; iCtr < dTabLog.length ; iCtr++)
+				{
+					if (iTabMat[iCtr] != INACTIF)
+						if (dTabLog[iCtr] > dNoteLogMax)
+						{
+							dNoteLogMax		= dTabLog[iCtr];
+							strAffichage 	= "\nL'étudiant " + iTabMat[iCtr] + " " + strTabNom[iCtr] + " à la note la plus haute avec " + zerochiffre.format(dTabLog[iCtr]) + "%";
+						}
+							
+				}
+				
+				JOptionPane.showMessageDialog(null, strAffichage);
+				break;
+				
+			case '8':
+				dMoyProg 	= VIDE;
+				iNoteValide	= VIDE;
+
+				/***********************************************************************
+				Ajoute toutes les notes de Programmation à la moyenne.
+				***********************************************************************/
+				for (iCtr = 0 ; iCtr < dTabProg.length ; iCtr++)
+					if(iTabMat[iCtr] != INACTIF)
+						{
+							dMoyProg += dTabProg[iCtr];
+							iNoteValide++;
+						}
+				
+				dMoyProg /= iNoteValide;
+				JOptionPane.showMessageDialog(null, "La moyenne du cours Programmation structurée est de " + zerochiffre.format(dMoyProg) + "%.");
+				break;
+			
+			case '9':
+				dMoyTot 	= VIDE;
+				iNoteValide	= VIDE;
+				
+				/***********************************************************************
+				Ajoute toutes les notes de Logique à la moyenne totale.
+				***********************************************************************/
+				for (iCtr = 0 ; iCtr < dTabLog.length ; iCtr++)
+					if(iTabMat[iCtr] != INACTIF)
+					{
+						dMoyTot += dTabLog[iCtr];
+						iNoteValide++;
+					}
+
+				/***********************************************************************
+				Ajoute toutes les notes de Programmation à la moyenne totale.
+				***********************************************************************/
+				for (iCtr = 0 ; iCtr < dTabProg.length ; iCtr++)
+					if(iTabMat[iCtr] != INACTIF)
+					{
+						dMoyTot += dTabProg[iCtr];
+						iNoteValide++;
+					}
+				
+				dMoyTot /= iNoteValide;
+				JOptionPane.showMessageDialog(null, "La moyenne du cours Programmation structurée est de " + zerochiffre.format(dMoyTot) + "%.");
+				break;
+				
+			}
+			
+		} while (cChoixMenu != 'Q');
+		
+		/***********************************************************************
+		Message de fin.
+		***********************************************************************/
+		JOptionPane.showMessageDialog(null, "L'application va terminé, bonne journée.");
+		
+		System.exit(0);
+
+	}
+
+}

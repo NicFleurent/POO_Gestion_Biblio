@@ -1,0 +1,39 @@
+package ProjetPersonnel;
+
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+
+/***********************************************************************
+
+Le fichier:			CalculBowling.java
+
+Projet:				Projet Personnel
+
+Objectifs:			Compile les scores de bowling
+
+Logiciel: 			Éclipse 4.16.0
+
+Plateforme:			Windows
+
+Auteur:				Nicolas Fleurent
+
+Date de création:	2022-11-14
+
+***********************************************************************/
+
+public class Bowling 
+{
+
+	public static void main(String[] args) 
+	{
+		final	int		MAX_LANCER	= 21;																		//Maximum de lancer dans une partie
+		final	int		MAX_CAR		= 10;																		//Maximum de lancer dans une partie
+		
+		
+				int		iLancer[]	= new int[MAX_LANCER];														//Emplacement mémoire pour chaque lancer
+				int		iCarreau[]	= new int[MAX_CAR];															//Emplacement mémoire pour le total du chaque carreau
+				int		iScore[]	= new int[MAX_CAR];															//Emplacement mémoire pour le score total à chaque carreau
+
+	}
+
+}
